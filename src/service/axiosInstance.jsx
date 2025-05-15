@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:8081',
+  baseURL: 'https://dtube-backend.onrender.com/',
   headers: {
     "Content-Type": "application/json",
   },
@@ -26,7 +26,7 @@ axiosInstance.interceptors.response.use(
     if (error.response) {
       if (error.response.status === 401) {
         localStorage.removeItem("token");
-        window.location.href = '/login'; 
+        window.location.href = '/login';
       }
     }
     return Promise.reject(error);
