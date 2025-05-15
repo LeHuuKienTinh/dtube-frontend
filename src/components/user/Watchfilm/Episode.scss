@@ -1,0 +1,117 @@
+.episode-container-watch {
+    width: 100%;
+    margin: 0 auto;
+    color: #fff;
+  
+    .episode-list {
+      h2 {
+        font-size: 20px;
+        margin-bottom: 20px;
+        padding: 40px 20px 20px 0;
+        border-bottom: 1px solid #444;
+        color: #ffffff;
+      }
+  
+      .no-episodes {
+        font-size: 16px;
+        color: #aaa;
+        text-align: center;
+      }
+  
+      .episode-item {
+        display: flex;
+        // margin-bottom: 15px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        // border-left: 4px solid transparent;
+  
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+  
+        &.current-episode {
+          background: #ff0004;
+          .btn-watch{
+            display: none;
+          }
+        }
+  
+        .episode-thumbnail {
+          width: 180px;
+          height: 100px;
+          object-fit: cover;
+        }
+  
+        .episode-info {
+            flex-grow: 1;
+            align-items: center;
+          h3 {
+            margin: 0 0 5px 0;
+            font-size: 18px;
+            color: #f1c40f;
+          }
+  
+          p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #ffffff;
+            font-weight: 500;
+          }
+  
+          .btn-watch {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 4px;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+  
+            &:hover {
+              background: #c0392b;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  .loading-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    color: #fff;
+    font-size: 18px;
+  }
+  
+  .not-found-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    color: #e74c3c;
+    font-size: 18px;
+  }
+  
+  // Responsive styles
+  @media (max-width: 768px) {
+    .episode-container-watch {
+      padding: 10px;
+  
+      .episode-list {
+        .episode-item {
+          flex-direction: column;
+  
+          .episode-thumbnail {
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+          }
+        }
+      }
+    }
+  }

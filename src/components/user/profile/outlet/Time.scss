@@ -1,0 +1,44 @@
+
+.time-wrapper{
+  h2{
+    color: #e00a0a;
+      font-size: 24px;
+      font-weight: 700;
+  }
+
+  .time-main{
+    .table-time {
+      border-collapse: collapse;
+      font-size: 16px;
+      color: #333;
+      margin-left: 40px;
+  
+      th,
+      td {
+        padding: 14px 20px;
+        text-align: left;
+      }
+  
+      th {
+        color: #d40101ee;
+        font-weight: 500;
+        border-right: 1px solid #fff;
+      }
+  
+      td {
+        background-color: #f9f9f9;
+        color: #212121;
+        font-weight: 400;
+      }
+  
+      tr:not(:last-child) td,
+      tr:not(:last-child) th {
+        border-bottom: 1px solid #e0e0e0;
+      }
+  
+      tr:hover td {
+        background-color: #fff0f0;
+      }
+    }
+  }
+}

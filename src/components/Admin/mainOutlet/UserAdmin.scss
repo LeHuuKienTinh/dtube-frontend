@@ -1,0 +1,228 @@
+.user-admin-container {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(100, 0, 0, 0.1);
+  color: #000;
+  padding: 0 20px 20px 0px;
+
+  h2 {
+    color: #e00a0a;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-left: 0px;
+  }
+
+  .search-box {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #3c2929;
+    margin-bottom: 1.5rem;
+    border-radius: 4px;
+    font-size: 16px;
+
+    &:focus {
+      border: 1px solid red;
+      outline: none;
+    }
+  }
+
+  .table-container {
+    width: 100%;
+    overflow-x: auto;
+
+    .user-table {
+      // width: 100%;
+      table-layout: fixed;
+      border-collapse: collapse;
+
+      /* Thiết lập chiều rộng cố định cho các cột */
+      th:nth-child(1), td:nth-child(1) { width: 3%; }  /* STT */
+      th:nth-child(2), td:nth-child(2) { width: 25%; } /* Tên */
+      th:nth-child(3), td:nth-child(3) { width: 20%; } /* Email */
+      th:nth-child(4), td:nth-child(4) { width: 10%; } /* Loại */
+      th:nth-child(5), td:nth-child(5) { width: 20%; } /* Hết hạn */
+      th:nth-child(6), td:nth-child(6) { width: 7%; text-align: center } /* Thiết bị */
+      th:nth-child(7), td:nth-child(7) { width: 15%; text-align: center; } /* Hành động */
+
+      th, td {
+        padding: 12px 10px;
+        text-align: left;
+        border-bottom: 1px solid #9b9a9a;
+        vertical-align: middle;
+      }
+
+      th {
+        background: #ff0000;
+        color: white;
+        position: sticky;
+        top: 0;
+        font-weight: 600;
+      }
+
+      tr:hover {
+        background-color: #f9f9f9;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      .edit-btn, .delete-btn {
+        padding: 6px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.3s;
+      }
+
+      .edit-btn {
+        background: #fff;
+        color: #c62828;
+        border: 1px solid #c62828;
+        margin-right: 8px;
+
+        &:hover {
+          background: #c62828;
+          color: white;
+        }
+      }
+
+      .delete-btn {
+        background: #ff0000;
+        color: white;
+        border: 1px solid #ff0000;
+
+        &:hover {
+          background: #c62828;
+          border-color: #c62828;
+        }
+      }
+    }
+  }
+
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(20, 20, 20, 0.6);
+    display: none;
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+
+    &.show {
+      display: flex;
+    }
+
+    .modal-user {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 0.3s ease;
+
+      h2 {
+        color: #c62828;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        font-size: 22px;
+      }
+
+      input, select {
+        width: 100%;
+        padding: 0.75rem;
+        margin-bottom: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+
+        &:focus {
+          border-color: #c62828;
+          outline: none;
+        }
+      }
+
+      .modal-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-top: 20px;
+
+        button {
+          padding: 8px 16px;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 14px;
+          transition: all 0.3s;
+        }
+
+        button:first-child {
+          background: #ddd;
+          border: 1px solid #ccc;
+
+          &:hover {
+            background: #ccc;
+          }
+        }
+
+        button:last-child {
+          background: #c62828;
+          color: white;
+          border: 1px solid #c62828;
+
+          &:hover {
+            background: #a51c1c;
+          }
+        }
+      }
+    }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    padding: 15px;
+
+    h2 {
+      font-size: 20px;
+    }
+
+    .table-container {
+      .user-table {
+        min-width: 800px; /* Giảm giá trị cho mobile */
+
+        th, td {
+          padding: 8px 10px;
+          font-size: 14px;
+        }
+
+        .edit-btn, .delete-btn {
+          padding: 4px 8px;
+          font-size: 12px;
+        }
+      }
+    }
+
+    .modal-user {
+      padding: 1.5rem;
+
+      h2 {
+        font-size: 18px;
+      }
+
+      input, select {
+        padding: 0.5rem;
+        font-size: 14px;
+      }
+    }
+  }
+}

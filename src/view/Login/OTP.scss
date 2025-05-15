@@ -1,0 +1,41 @@
+.otp-container {
+    background-color: rgba(0, 0, 0, 0.8);
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5vh;
+  }
+  
+  .otp-title {
+    color: white;
+    margin-bottom: 20px;
+  }
+  
+  .otp-input-group {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .otp-input {
+    width: 45px;
+    height: 55px;
+    font-size: 24px;
+    text-align: center;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    background-color: #222;
+    color: white;
+    transition: border-color 0.2s ease;
+  }
+  
+  .otp-input.otp-success {
+    border-color: green;
+  }
+  
+  .otp-input.otp-error {
+    border-color: red;
+  }
+  

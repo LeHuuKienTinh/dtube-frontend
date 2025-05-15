@@ -1,0 +1,84 @@
+$primary-color: #e50914; // Netflix red
+
+.background-container {
+  position: relative;
+  background-image: url('../../assets/background-homepage.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  // Overlay làm mờ ảnh
+  &::before {
+    content: "";  
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); // chỉnh độ mờ ở đây
+    z-index: 1;
+  }
+
+  .navbar {
+    position: relative;
+    z-index: 3; // nổi trên lớp overlay
+    padding: 1.5rem 2rem 0;
+    display: flex;
+    align-items: center;
+
+    .navbar-brand {
+      color: $primary-color !important;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 40px !important;
+      font-weight: bold;
+      text-shadow: 
+        0px 2px 4px rgba(0, 0, 0, 0.4), 
+        0px 4px 8px rgba(0, 0, 0, 0.6), 
+        0px 6px 8px rgba(0, 0, 0, 0.4);
+      z-index: 2;
+      text-decoration: none;
+    }
+  }
+
+  .outlet-content {
+    z-index: 2;
+    position: relative;
+    padding: 0 2rem;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.footer {
+  background-color: #111;
+  border-top: 1px solid #333;
+  padding: 2rem 0;
+  z-index: 5;
+  position: relative;
+}
+
+// Responsive styles for mobile
+@media (max-width: 768px) {
+  .background-container {
+    .navbar {
+      padding: 1rem 1.5rem;
+
+      .navbar-brand {
+        font-size: 28px !important; // Adjust font size for smaller screens
+      }
+    }
+
+    .outlet-content {
+      padding: 2rem 1rem; // Reduce padding for smaller screens
+    }
+  }
+
+  .footer {
+    padding: 1.5rem 0; // Adjust footer padding for mobile
+  }
+}

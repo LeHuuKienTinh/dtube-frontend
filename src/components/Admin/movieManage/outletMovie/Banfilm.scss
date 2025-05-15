@@ -1,0 +1,99 @@
+.banfilm-container {
+    padding: 0px 20px 0px 0px;
+    background-color: #f9f9f9;
+  }
+  
+  .title-ban {
+    font-size: 20px;
+    color: #d50000;
+    margin-bottom: 20px;
+    padding-left: 18px;
+  }
+  
+  .search-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 20px 0px 0px 0px;
+  }
+  
+  .search-input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    width: 100%;
+    outline: none;
+    &:focus {
+      border: 1px solid red;
+      outline: none;
+    }
+  }
+  .movie-ban-table td:nth-child(1) {
+      max-width: 300px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .movie-ban-table td:nth-child(2) {
+      max-width: 300px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  .movie-ban-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    
+     th, td {
+        padding: 10px 10px;
+        text-align: left;
+        vertical-align: middle;
+        font-weight: 600;
+      }
+      td{
+      border-bottom: 1px solid #9b9a9a;
+      }
+    th {
+        background: #ff0000;
+        color: white;
+        position: sticky;
+        font-weight: 600;
+      }
+  }
+  
+  .movie-table th, .movie-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .movie-table th {
+    background-color: #f1f1f1;
+    font-weight: bold;
+  }
+  
+  .movie-table td {
+    background-color: #fff;
+  }
+  
+  .unban-btn {
+    padding: 8px 15px;
+    background-color: #ff1100;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+  
+  .unban-btn:hover {
+    background-color: #d32f2f;
+  }
+  
+  .unban-btn:focus {
+    outline: none;
+  }
+  

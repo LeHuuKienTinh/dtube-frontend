@@ -1,0 +1,38 @@
+.pagination {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    padding: 1rem;
+    .pagination button.active {
+        background-color: #f39c12;  // Màu nền cho nút hiện tại
+        color: white;               // Màu chữ
+        font-weight: bold;          // Đậm hơn
+      }
+      
+    button {
+      background-color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      color: white;
+      border: 1px solid red;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-radius: 4px;
+      font-weight: bold;
+  
+      &:hover {
+        background-color: #111;
+        color: red;
+      }
+  
+      &:disabled {
+        background-color: #333;
+        color: #999;
+        cursor: not-allowed;
+        border-color: #555;
+      }
+    }
+  }
+  

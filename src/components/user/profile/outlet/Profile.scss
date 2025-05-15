@@ -1,0 +1,74 @@
+.profile-wrapper {
+  display: flex;
+  .profile-container {
+    max-width: 700px;
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    // margin-right: auto;
+
+    h2 {
+      color: #d32f2f;
+      font-size: 24px;
+      font-weight: 700;
+    }
+  }
+
+  .profile-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
+    color: #333;
+    margin-left: 40px;
+
+    th,
+    td {
+      padding: 14px 20px;
+      text-align: left;
+    }
+
+    th {
+      color: #d40101ee;
+      font-weight: 500;
+      border-right: 1px solid #fff;
+    }
+
+    td {
+      background-color: #f9f9f9;
+      color: #212121;
+      font-weight: 400;
+    }
+
+    tr:not(:last-child) td,
+    tr:not(:last-child) th {
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    tr:hover td {
+      background-color: #fff0f0;
+    }
+
+    .btn-group {
+      text-align: center;
+      display: flex;
+      gap: 12px;
+      button.copy-token-btn {
+        display: inline-block;
+        background-color: #d32f2f;
+        color: white;
+        padding: 10px 16px;
+        margin: 0;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+        font-weight: 600;
+        white-space: nowrap; // không cho chữ xuống dòng
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #b71c1c;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+.alltype-container {
+  background-color: #000;
+  color: #fff;
+  margin-top: 30px;
+  h1 {
+    color: white;
+    font-size: 24px;
+    margin-left: 30px;
+  }
+
+  .category-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));  // Tự động chia cột, mỗi ô có chiều rộng tối thiểu là 150px và chia đều
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 40px;
+  }
+
+  .category-button {
+    padding: 10px 20px;
+    border: 2px solid #fff;
+    color: #fff;
+    text-decoration: none;
+    background-color: transparent;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    text-align: center; // Canh giữa nội dung
+
+    &:hover {
+      color: red;
+      border-color: red;
+      background-color: #111;
+    }
+  }
+}

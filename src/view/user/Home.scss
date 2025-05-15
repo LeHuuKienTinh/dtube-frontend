@@ -1,0 +1,36 @@
+.container {
+  background-color: black;
+}
+
+.container-home {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; // Đảm bảo chiều cao tối thiểu là 100% chiều cao trình duyệt
+  width: 100%;
+  position: relative;
+
+  .outlet {
+    flex: 1; // Giúp đẩy footer xuống dưới nếu còn khoảng trống
+  }
+}
+
+h2 {
+  padding: 20px;
+  color: white;
+}
+
+a:hover, a:focus, a:active {
+  text-decoration: none !important;
+}
+
+/* Responsive design for mobile devices */
+@media (max-width: 768px) {
+  .container-home {
+    padding: 10px;
+  }
+
+  h2 {
+    font-size: 18px;
+    padding: 15px;
+  }
+}

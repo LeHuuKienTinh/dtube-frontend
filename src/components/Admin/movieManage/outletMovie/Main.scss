@@ -1,0 +1,162 @@
+.main-page-ban {
+  position: relative;
+  .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); // lớp phủ nền mờ
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-ban {
+  background-color: #ffffff;
+  color: #fff;
+  padding: 20px 30px 20px 30px;
+  border-radius: 8px;
+  width: 600px;
+  max-width: 90%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+  h3 {
+    font-size: 22px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: black;
+  }
+
+  p {
+    margin: 10px 0;
+    color: black;
+  }
+
+  input {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    border: none;
+    font-size: 16px;
+    background-color: #ffffff;
+    color: #000000;
+  }
+
+  .modal-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+
+    button {
+      padding: 8px 16px;
+      font-size: 14px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+
+      &:nth-child(2) { // nút xác nhận cấm
+        background-color: #e50914;
+        color: #fff;
+
+        &:hover {
+          background-color: #c40812;
+        }
+      }
+
+      &:nth-child(1) { // nút hủy
+        background-color: #555;
+        color: #fff;
+
+        &:hover {
+          background-color: #444;
+        }
+      }
+    }
+  }
+}
+
+  
+  .search-container {
+    padding: 20px;
+    display: inline-block;
+    width: 100%;
+    flex-direction: column; // ⬅️ Sắp xếp dọc
+    .search-bar {
+      width: 100%;
+      input {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        &:focus {
+              border: 1px solid red;
+              outline: none;
+            }
+      }
+    }
+
+    .film-list {
+      // margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-weight: 600;
+      max-height: 400px;
+      /* 👈 Giới hạn chiều cao để cuộn */
+      overflow-y: auto;
+      /* 👈 Kích hoạt cuộn dọc */
+      padding-right: 5px;
+      /* 👈 Tạo khoảng cho scrollbar */
+
+      .film-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 10px 10px 0;
+        border-bottom: 1px solid rgb(148, 148, 148);
+
+        img {
+          width: 50px;
+          height: 70px;
+          object-fit: cover;
+        }
+
+        span {
+          font-size: 16px;
+          flex: 1;
+        }
+
+        button {
+          &.banned-btn {
+            background-color: #555;
+            color: #ccc;
+            font-weight: bold;
+            cursor: not-allowed;
+            border: none;
+            font-size: 14px;
+            padding: 6px 10px;
+            border-radius: 4px;
+            &:hover {
+            transform: none;
+          }
+          }
+          background: none;
+          border: none;
+          font-size: 20px;
+          color: red;
+          cursor: pointer;
+          transition: transform 0.2s ease, color 0.2s ease;
+
+          &:hover {
+            transform: scale(1.3);
+          }
+        }
+
+      }
+    }
+  }
+}

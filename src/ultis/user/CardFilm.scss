@@ -1,0 +1,222 @@
+.movie-list-container {
+  z-index: 2;
+  padding: 12px 0;
+  position: relative;
+  // .title {
+  //   padding-top: 40px;
+  //   padding-bottom: 24px;
+  //   padding-left: 24px;
+  //   font-size: 1.5rem;
+  //   font-weight: 500;
+  //   color: #fff;
+  // }
+
+  .movie-item {
+    margin: 0px 20px;
+    overflow: hidden;
+    padding: 0;
+    width: fit-content;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    border-radius: 0px;
+
+    .movie-inner {
+      width: 180px;
+      height: 270px;
+      position: relative;
+      overflow: hidden;
+      // border-radius: 0px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      background-color: #111;
+    }
+
+    .movie-poster {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      // border-radius: 0px;
+    }
+
+    .movie-name {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+      color: #fff;
+      padding: 10px 15px; /* Điều chỉnh padding để có chiều cao đẹp */
+      font-size: 14px;
+      text-align: center;
+      font-weight: 600;
+      z-index: 2;
+      height: 58px; /* Đặt chiều cao cố định cho tên phim */
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.6); /* Màu đen mờ */
+        z-index: -1; /* Để nó nằm dưới tên phim */
+      }
+    }
+
+    .overlay-buttons {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(6px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.95);
+      transition: all 0.35s ease;
+      z-index: 3;
+
+      .btn {
+        background-color: rgba(255, 255, 255, 0.15);
+        border: none;
+        padding: 6px 12px;
+        // border-radius: 0px;
+        color: white;
+        font-size: 13px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        font-weight: 500;
+        width: 60%;
+        align-items: center;
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.3);
+          transform: scale(1.0);
+          color: rgb(255, 0, 0);
+        }
+
+        &.liked {
+          background-color: rgba(255, 0, 90, 0.5);
+        }
+      }
+    }
+
+    &:hover .movie-inner {
+      transform: scale(1.1);
+      box-shadow: 0 12px 30px rgba(255, 0, 90, 0.4);
+      z-index: 5;
+    }
+
+    &:hover .overlay-buttons {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+    }
+  }
+
+  .arrow-left,
+  .arrow-right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    color: white;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+    z-index: 5;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  .arrow-left {
+    left: 10px;
+  }
+
+  .arrow-right {
+    right: 10px;
+  }
+}
+
+/* Responsive styles for mobile */
+@media (max-width: 768px) {
+  .movie-list-container {
+    padding: 5px;
+
+    .movie-list {
+      gap: 10px;
+    }
+  }
+
+  .movie-item {
+    .movie-inner {
+      width: 140px;
+      height: 210px;
+    }
+
+    .movie-name {
+      font-size: 13px;
+      padding: 6px 8px;
+    }
+
+    .overlay-buttons {
+      gap: 6px;
+
+      .btn {
+        padding: 4px 10px;
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 10px;
+
+  .page-btn {
+    background: none;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #fff;
+      color: #000;
+    }
+
+    &.active {
+      background-color: red;
+      color: #fff;
+      border-color: red;
+    }
+  }
+}
+
+.movie-grid-container {
+  padding: 20px;
+
+  .movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+  }
+}

@@ -1,0 +1,54 @@
+.netflix-faq {
+    background-color: #141414;
+    color: #e5e5e5;
+    padding: 30px;
+    max-width: 960px;
+    margin: 0 auto;
+    border-radius: 12px;
+  
+    .faq-section {
+    margin-bottom: 60px;
+    background-color: #141414;
+    padding: 0;
+      h1, h2 {
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #fff;
+        margin-top: 0px;
+      }
+  
+      .faq-image {
+        width: 100%;
+        max-height: 400px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 24px;
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+      }
+  
+      .faq-content {
+        font-size: 16px;
+        line-height: 1.6;
+  
+        p {
+          margin-bottom: 18px;
+        }
+  
+        .highlight {
+          color: #e50914;
+          font-weight: 500;
+        }
+  
+        .link {
+          text-decoration: underline;
+          cursor: pointer;
+  
+          &:hover {
+            color: #ff4040;
+          }
+        }
+      }
+    }
+  }
+  

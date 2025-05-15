@@ -1,0 +1,231 @@
+.comments-container {
+    color: #fff;
+    border-radius: 8px;
+    padding: 20px 8px 8px 24px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.5s ease-out;
+    position: relative;
+    overflow: hidden;
+  
+    &.mounted {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  
+    .comments-header {
+      margin-bottom: 15px;
+      animation: fadeIn 0.4s ease-out 0.1s forwards;
+      opacity: 0;
+      flex-shrink: 0;
+  
+      h3 {
+        margin: 0 0 10px 0;
+        font-size: 1.2rem;
+        padding: 10px 0 10px 0  ;
+      }
+    }
+  
+    .view-mode-selector {
+      display: flex;
+      gap: 10px;
+  
+      button {
+        background: transparent;
+        color: #aaa;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border-radius: 4px;
+        font-size: 0.9rem;
+  
+        &.active {
+          color: #f90101;
+          background: rgba(222, 214, 214, 0.1);
+        }
+  
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+  
+    .comments-scroll-container {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 15px;
+    }
+  
+    .comments-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow-y: auto;
+      padding-right: 5px;
+      animation: fadeIn 0.4s ease-out 0.2s forwards;
+      opacity: 0;
+  
+      &::-webkit-scrollbar {
+        width: 5px;
+      }
+  
+      &::-webkit-scrollbar-thumb {
+        background: #ff4d4d;
+        border-radius: 5px;
+      }
+    }
+  
+    .comment-item {
+      background: rgba(255, 255, 255, 0.05);
+      // border-radius: 6px;
+      padding: 12px;
+      margin-bottom: 10px;
+      animation: slideIn 0.3s ease-out forwards;
+      opacity: 0;
+      transform: translateX(-10px);
+  
+      &:last-child {
+        margin-bottom: 0;
+      }
+  
+      .comment-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 8px;
+        strong {
+          font-size: 0.95rem;
+        }
+  
+        .user-type {
+          font-size: 0.7rem;
+          margin-left: 8px;
+          color: #ff4d4d;
+          background: rgba(255, 77, 77, 0.1);
+          padding: 2px 6px;
+          // border-radius: 4px;
+        }
+      }
+  
+      .comment-text {
+        margin: 0 0 8px 0;
+        font-size: 0.9rem;
+        line-height: 1.4;
+      }
+  
+      .comment-footer {
+        display: flex;
+        align-items: center;
+        font-size: 0.8rem;
+        color: #aaa;
+        
+        .time-stamp {
+          margin-right: 10px;
+          color: #ff0000;
+        }
+        .btn-report{
+          text-align: center;
+          font-size: 12px;
+          border: none;
+          padding: none;
+          color: rgb(209, 0, 0);
+          background-color: transparent;
+          margin-top: 2px;
+          &:hover{
+            color: rgb(255, 0, 0);
+          }
+          &:disabled{
+            color: gray;
+          }
+        }
+      }
+    }
+  
+    .no-comments {
+      text-align: center;
+      color: #aaa;
+      padding: 20px 0;
+      font-size: 0.9rem;
+    }
+  
+    .comment-form {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      animation: fadeIn 0.4s ease-out 0.3s forwards;
+      opacity: 0;
+      flex-shrink: 0;
+      background: rgba(0, 0, 0, 0.3);
+      // padding-top: 15px;
+      position: sticky;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 2;
+  
+      textarea {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        // border-radius: 6px;
+        padding: 10px;
+        color: #fff;
+        resize: none;
+        margin-bottom: 10px;
+        transition: all 0.2s ease;
+  
+        &:focus {
+          outline: none;
+          border-color: #fc0000;
+          // box-shadow: 0 0 0 1px rgba(146, 4, 4, 0.2);
+        }
+      }
+  
+      button {
+        background: #ff0000;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        // border-radius: 6px;
+        cursor: pointer;
+        width: 100%;
+        transition: all 0.2s ease;
+  
+        &:hover {
+          background: #ff3333;
+          transform: translateY(-1px);
+        }
+  
+        &:active {
+          transform: translateY(0);
+        }
+  
+        &:disabled {
+          background: #555;
+          cursor: not-allowed;
+          transform: none;
+        }
+      }
+    }
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideIn {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }

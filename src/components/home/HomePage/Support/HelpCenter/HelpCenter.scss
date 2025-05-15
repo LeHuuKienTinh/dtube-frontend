@@ -1,0 +1,32 @@
+.list-support {
+    margin-left: 40px;
+    ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+            margin-bottom: 12px;
+
+            .chil-support {
+                display: block;
+                font-weight: 500;
+                color: #007bff;
+                cursor: pointer;
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            .support-content {
+                margin-top: 8px;
+                padding-left: 10px;
+                color: #d70303;
+                font-size: 14px;
+                line-height: 1.5;
+                border-left: 3px solid #007bff;
+            }
+        }
+    }
+}

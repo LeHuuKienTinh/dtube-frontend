@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/public/icon.jpg" type="image/jpg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DTube</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/style.css">
+
+  <!-- FIX 1: Khai báo timer ở HEAD trước mọi thứ -->
+  <script>
+    window.timer = window.timer || 300; // 300s = 5 phút
+    Object.defineProperty(window, 'timer', {
+      get: () => window._timer || 300,
+      set: (value) => window._timer = value
+    });
+  </script>
+</head>
+
+<body>
+  <div id="root" style="background-color: black;"></div>
+
+  <!-- FIX 2: Bẫy mọi lỗi timer trước khi load script VNPay -->
+  <script>
+    // Bẫy lỗi toàn cục
+    window.addEventListener('error', (e) => {
+      if (e.message.includes('timer')) {
+        e.preventDefault();
+        console.warn('Lỗi timer đã được bắt và xử lý');
+      }
+    });
+
+    // Ghi đè prototype của Date nếu cần
+    const originalSetTimeout = window.setTimeout;
+    window.setTimeout = function (callback, delay) {
+      if (typeof callback === 'string' && callback.includes('timer')) {
+        callback = callback.replace('timer', 'window.timer');
+      }
+      return originalSetTimeout(callback, delay);
+    };
+  </script>
+
+  <!-- Load script chính của bạn -->
+  <script type="module" src="/src/main.jsx"></script>
+
+  <!-- FIX 3: Đảm bảo VNPay script load sau cùng -->
+  <script>
+    // Tạo MutationObserver để xử lý dynamic scripts
+    const observer = new MutationObserver(() => {
+      if (typeof timer === 'undefined') {
+        window.timer = 300;
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+  </script>
+</body>
+
+</html>

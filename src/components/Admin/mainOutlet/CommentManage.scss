@@ -1,0 +1,83 @@
+.comment-manage-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center; // Căn giữa bảng và tiêu đề
+  padding: 20px;
+}
+
+.comment-manage-title {
+  font-size: 24px;
+  color: #d63031;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.add-word {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  width: 60%;
+  justify-content: center;
+}
+
+.input-badword {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  &:focus {
+    border: 1px solid red;
+    outline: none;
+  }
+}
+
+.add-word-btn {
+  padding: 8px 16px;
+  background-color: #fb0000;
+  color: white;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #b40000;
+  }
+}
+
+.table-bad-word {
+  width: 60%;
+  border-collapse: collapse;
+  margin: 0 auto;
+
+  th, td {
+    border-bottom: 1px solid #9f9f9f;
+    padding: 10px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+
+  td.text-end {
+    text-align: right;
+  }
+
+  td.text-start {
+    text-align: left;
+  }
+
+  button {
+    padding: 6px 12px;
+    background-color: #e8e8e8;
+    color: red;
+    border: 1px solid red;
+    cursor: pointer;
+    margin-left: 4px;
+
+    &:hover {
+      background-color: #f60000;
+      color: white;
+    }
+  }
+}

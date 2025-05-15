@@ -1,0 +1,79 @@
+// Existing styles remain unchanged
+
+// Add responsive styles for mobile
+@media (max-width: 768px) {
+  .netflix-header {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .hero-section {
+    padding-top: 50px;
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 90%;
+    padding: 15px;
+  }
+
+  .hero-section h2 {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .email-form {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .email-form input {
+    width: 100%;
+  }
+
+  .cta-button {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .feature {
+    flex-direction: column;
+  }
+
+  .feature.reverse {
+    flex-direction: column;
+  }
+
+  .image {
+    margin-left: 0;
+    margin-bottom: 20px;
+    height: 200px;
+  }
+
+  .text h3 {
+    font-size: 1.5rem;
+  }
+
+  .text p {
+    font-size: 0.9rem;
+  }
+
+  .faq-section {
+    padding: 20px 10px;
+  }
+
+  .faq-item h4 {
+    font-size: 1.2rem;
+  }
+
+  .faq-item p {
+    font-size: 0.9rem;
+  }
+
+  .faq-item ul li {
+    padding: 8px 0;
+  }
+}

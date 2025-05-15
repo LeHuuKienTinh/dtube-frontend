@@ -1,0 +1,233 @@
+/* Trailer.scss */
+.trailer-container {
+    background-color: #111;
+    color: #fff;
+    min-height: 100vh;
+    width: 100%;
+  }
+  
+  .banner {
+    background-size: cover;
+    background-position: center;
+    padding: 80px 0 40px;
+    position: relative;
+    height: 100%;
+  
+    .banner-content {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding-bottom:40px;
+      border-radius: 8px;
+      width: 80%;
+      margin: 0 auto;
+  
+      .movie-detail{
+        padding: 20px 40px 0px;
+        h1 {
+          font-size: 40px;
+          font-weight: bold;
+          margin-bottom: 10px;
+        }
+    
+        p {
+          font-size: 16px;
+          margin-bottom: 20px;
+        }
+    
+        .btn-group{
+          display: flex;
+              .watch-button {
+                  padding: 10px 20px;
+                  font-size: 16px;
+                  background-color: #e50914;
+                  color: #fff;
+                  border: none;
+                  cursor: pointer;
+              }
+              .report-button {
+                  background-color: transparent; // nền trong suốt
+                  border: none;                  // không có viền
+                  border-radius: 50%;            // bo tròn 100% thành hình tròn
+                  width: 40px;                   // kích thước hình tròn
+                  height: 40px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: #f4f4f4a3;                // màu icon
+                  font-size: 20px;
+                  cursor: pointer;
+                  margin-left: auto;
+                  transition: background-color 0.3s;
+                  &:hover {
+                    color: rgba(255, 0, 13, 0.766); // hiệu ứng nền nhẹ khi hover
+                  }
+                }
+          }
+      }
+    }
+  }
+  
+  .trailer-iframe {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    iframe {
+      width: 100%;
+      height: 450px;
+      border: none;
+    }
+  }
+  
+  .episode-list {
+    width: 80%;
+    margin: 0 auto;
+    h2 {
+      font-size: 26px;
+      padding: 40px 0 0 ;
+      margin-bottom: 0 !important;
+    }
+  
+    .episode-item {
+      display: flex;
+      border-bottom: 1px solid #444;
+      padding: 10px 0px 12px 4px;
+      img {
+        width: 180px;
+        height: 100px;
+        object-fit: cover;
+        // border-radius: 6px;
+      }
+  
+      .episode-info {
+        margin-left: 20px;
+        flex: 1;
+  
+        h3 {
+          font-size: 18px;
+          margin-bottom: 8px;
+        }
+  
+        .movie-content{
+          color: #ccc;
+          font-size: 14px;
+          line-height: 1.4;
+          text-align: justify;
+        }
+  
+        a {
+          display: inline-block;
+          margin-top: 10px;
+          color: #e50914;
+          text-decoration: none;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  
+  .loading-screen {
+    background-color: #111;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    p {
+      font-size: 18px;
+    }
+  }
+  
+  .not-found-screen {
+    background-color: #111;
+    color: #fff;
+    min-height: 100vh;
+    text-align: center;
+    padding-top: 100px;
+  
+    p {
+      font-size: 18px;
+    }
+  }
+  .btn-watch{
+    background-color: #000;
+    color: #e50914;
+    border: 2px solid #e50914;
+    padding: 10px 20px;
+    font-size: 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background-color: #e50914;
+      color: #000;  
+    }
+  }
+  .report-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.report-modal {
+  background-color: #222;
+  color: #fff;
+  padding:  20px 30px 20px 30px;
+  border-radius: 8px;
+  width: 500px;
+  max-width: 90%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+
+  h2 {
+    font-size: 22px;
+    padding-left: 0;
+  }
+
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: none;
+    font-size: 16px;
+    resize: vertical;
+    background-color: #333;
+    color: #fff;
+  }
+
+  .modal-actions {
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+
+    .cancel-btn, .submit-btn {
+      padding: 8px 16px;
+      font-size: 14px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .cancel-btn {
+      background-color: #555;
+      color: #fff;
+    }
+
+    .submit-btn {
+      background-color: #e50914;
+      color: #fff;
+    }
+
+    .submit-btn:hover {
+      background-color: #c40812;
+    }
+  }
+}

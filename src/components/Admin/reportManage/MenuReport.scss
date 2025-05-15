@@ -1,0 +1,41 @@
+.menu-link {
+  display: inline-block;
+  padding: 10px 20px;
+  font-weight: 600;
+  color: #111;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  position: relative;
+  flex: 1;
+
+  &:hover {
+    color: #e50914;
+  }
+
+  &:hover::after {
+    content: '';
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 8px;
+    height: 2px;
+    background-color: #e50914;
+    border-radius: 1px;
+  }
+
+  &.active {
+    color: #e50914;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 8px;
+      height: 2px;
+      background-color: #e50914;
+      border-radius: 1px;
+    }
+  }
+}

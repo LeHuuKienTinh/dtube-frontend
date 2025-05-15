@@ -1,0 +1,238 @@
+.netflix-intro {
+  color: white;
+  background-color: black;
+}
+
+.netflix-header {
+  display: flex;
+  align-items: center;
+  position: absolute; // bật lại position fixed
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  z-index: 10; // đảm bảo nằm trên lớp phủ
+  background: transparent; // 
+}
+
+.logo {
+  margin-left: 40px;
+}
+
+.netflix-header .logo {
+  color: #e50914 !important;
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: bold;
+  font-size: 40px !important;
+  text-shadow: 
+    0px 2px 4px rgba(0, 0, 0, 0.4), 
+    0px 4px 8px rgba(0, 0, 0, 0.6),
+    0px 6px 8px rgba(0, 0, 0, 0.4);
+  position: relative;
+  z-index: 2;
+}
+
+.btn-login{
+  margin-left: auto;
+  background-color: red;
+  color: white;
+  font-weight: 600;
+  border: none;
+  padding: 4px 12px;
+  border-radius: 6px;
+  &:hover{
+    background-color: rgb(201, 3, 3);
+  }
+}
+
+.hero-section {
+  position: relative;
+  height: 100vh;
+  background: url('../../../assets/bgrvipprojohn.jpg') no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 0px; 
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+  }
+}
+
+
+.hero-content {
+  max-width: 720px;
+  min-height: 320px;
+  color: white;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 30px 30px 44px;
+  z-index: 2;
+}
+
+.main-title{
+  font-size: 44px;
+  margin-bottom: 30px;
+  margin-top: 0;
+  font-weight: 700;
+
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  font-weight: 700;
+
+}
+
+.email-prompt {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  // white-space: nowrap;
+  font-weight: 700;
+
+}
+
+.email-form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.email-form input {
+  padding: 10px;
+  font-size: 1rem;
+  border: none;
+  width: 300px;
+  max-height: 44px;
+  outline: none;
+  &:focus{
+    animation: rotateShadow 4s infinite linear;
+    border: none;
+  }
+}
+
+.cta-button {
+  background-color: #e50914;
+  color: white;
+  border: none;
+  padding: 6px 18px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  &:hover{
+    background-color: #c3020b;
+  }
+}
+
+.divider {
+  height: 1px;
+  background-color: #333;
+  margin: 50px 0;
+}
+
+.feature-section {
+  padding: 40px 20px;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.feature.reverse {
+  flex-direction: row-reverse;
+}
+
+.text {
+  flex: 1;
+  padding: 20px;
+}
+
+.text h3 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.text p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.image {
+  flex: 1;
+  background-color: #333;
+  height: 300px;
+  border-radius: 2px;
+  margin-left: 20px;
+  box-shadow: 0 0 0 0.2px white;
+}
+
+.image.tv-image {
+  background: url('../../../assets/thuongthuctrentv.jpg') no-repeat center center/cover;
+}
+
+.image.mobile-image {
+  background: url('../../../assets/ngoaituyen.png') no-repeat center center/cover;
+}
+
+.image.device-image {
+  background: url('../../../assets/everywhere.jpg') no-repeat center center/cover;
+}
+
+.image.kids-image {
+  background: url('../../../assets/kid.jpg') no-repeat center center/cover;
+}
+
+.faq-section {
+  background: #222;
+  padding: 40px 20px;
+}
+
+.faq-item {
+  margin-bottom: 20px;
+}
+
+.faq-item h4 {
+  font-size: 1.5rem;
+}
+
+.faq-item p {
+  font-size: 1rem;
+  margin-top: 5px;
+  line-height: 1.5;
+}
+
+.faq-item ul {
+  list-style: none;
+  padding: 0;
+}
+
+.faq-item ul li {
+  padding: 10px 0;
+  border-bottom: 1px solid #444;
+}
+
+@keyframes rotateShadow {
+  0% {
+    box-shadow: -2px -2px 8px 1px #fc1500, 2px 2px 8px 1px #fbcd02;
+  }
+  25% {
+    box-shadow: -2px 2px 8px 1px #8f4102, 2px -2px 8px 1px #f99602;
+  }
+  50% {
+    box-shadow: 2px 2px 8px 1px #d45c00, -2px -2px 8px 1px #c88c01;
+  }
+  75% {
+    box-shadow: 2px -2px 8px 1px #f71900, -2px 2px 8px 1px #d48301;
+  }
+  100% {
+    box-shadow: -2px -2px 8px 1px #dd4702, 2px 2px 8px 1px #ff0000;
+  }
+}

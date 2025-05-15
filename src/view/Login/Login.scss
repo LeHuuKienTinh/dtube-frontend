@@ -1,0 +1,132 @@
+$primary-color: #e50914;
+$background-color: rgba(0, 0, 0, 0.75);
+$text-color: #fff;
+$input-bg: #333;
+
+.login {
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .login-container {
+        background: $background-color;
+        padding: 30px;
+        width: 60vh;
+        text-align: center;
+    }
+
+    .title, label, .forgot-password, .register {
+        color: lightgray;
+    }
+
+    .title {
+        margin-bottom: 20px;
+        color: $text-color;
+    }
+
+    .input-group {
+        margin-bottom: 15px;
+        text-align: left;
+
+        label {
+            font-size: 14px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            background: $input-bg;
+            border: none;
+            color: $text-color;
+        }
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        border: none;
+        margin-bottom: 10px;
+    }
+
+    .login-btn {
+        background: $primary-color;
+        color: $text-color;
+        &:hover {
+            background-color: rgb(198, 5, 5);
+        }
+    }
+
+    .code-login-btn {
+        margin-top: 20px;
+        background-color: rgb(86, 85, 85);
+        color: white;
+        &:hover {
+            background-color: rgb(103, 103, 103);
+        }
+    }
+
+    .divider {
+        color: gray;
+        margin: 10px 0;
+    }
+
+    .remember-me {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        margin: 12px 0px 24px;
+        input {
+            margin-right: 5px;
+        }
+    }
+
+    .register a {
+        color: $text-color;
+        font-weight: bold;
+    }
+
+    .error-box {
+        background-color: #ffe0e0;
+        border: 1px solid #ff4d4f;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+    }
+
+    .error-text {
+        color: #d8000c;
+        font-weight: bold;
+        margin: 0;
+    }
+
+    // Responsive styles for mobile
+    @media (max-width: 768px) {
+        .login-container {
+            width: 90%;
+            padding: 20px;
+        }
+
+        .title {
+            font-size: 18px;
+        }
+
+        .input-group label {
+            font-size: 12px;
+        }
+
+        button {
+            font-size: 14px;
+            padding: 10px;
+        }
+
+        .remember-me {
+            font-size: 12px;
+        }
+    }
+}

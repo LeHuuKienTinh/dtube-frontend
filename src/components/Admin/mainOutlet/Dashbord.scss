@@ -1,0 +1,89 @@
+.dashboard-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;  /* Chiếm toàn bộ chiều cao màn hình */
+    width: 100%;    /* Chiếm toàn bộ chiều rộng màn hình */
+    margin: 0;
+    background-color: #f4f6f9;  /* Màu nền sáng */
+    overflow: hidden; /* Không cho phép cuộn */
+  }
+  
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);  /* 3 cột đều */
+    grid-template-rows: repeat(2, 1fr);     /* 2 hàng đều */
+    gap: 20px;   /* Khoảng cách giữa các ô */
+    width: 100%;  /* Chiếm 100% chiều rộng */
+    height: 100%; /* Chiếm 100% chiều cao */
+    padding: 20px;
+    border-radius: 10px; /* Bo góc container */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+    background-color: white; /* Màu nền trắng */
+  }
+  
+  .dashboard-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;  /* Đảm bảo các item có thể mở rộng và hiển thị thông tin dọc */
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-weight: bold;
+    color: #333;
+    transition: all 0.3s ease;
+    height: 100%;  /* Đảm bảo ô chiếm đủ chiều cao */
+    min-height: 200px;  /* Đảm bảo mỗi ô có chiều cao tối thiểu */
+    overflow: hidden;  /* Ngăn không cho các nội dung tràn ra ngoài */
+  }
+  
+  .dashboard-item:hover {
+    transform: scale(1.05);  /* Tăng kích thước nhẹ khi hover */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .admin-container {
+    grid-column: span 1;
+    grid-row: span 1;
+    color: white;
+  }
+  
+  .other-container {
+    background-color: #36A2EB;
+    color: white;
+    font-size: 18px;
+    min-height: 150px;  /* Chiều cao tối thiểu để các ô khác có đủ không gian */
+  }
+  
+  .chart-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1; /* Cho phép phần chart mở rộng chiếm toàn bộ không gian còn lại trong item */
+  }
+  
+  .chart-info {
+    margin-top: 20px;
+    color: #666;
+    font-size: 14px;
+  }
+  
+  .chart-info div {
+    margin-bottom: 5px;  /* Thêm khoảng cách giữa các dòng thông tin */
+  }
+  
+  @media (max-width: 768px) {
+    .grid-container {
+      grid-template-columns: 1fr 1fr; /* 2 cột trên màn hình nhỏ */
+      grid-template-rows: repeat(3, 1fr); /* 3 hàng trên màn hình nhỏ */
+    }
+  
+    .dashboard-item {
+      min-height: 180px;  /* Giảm chiều cao tối thiểu khi màn hình nhỏ */
+    }
+  }
+  

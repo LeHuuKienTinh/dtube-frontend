@@ -1,0 +1,81 @@
+.like-btn {
+    display: flex;
+    align-items: center;
+    background-color: rgb(255, 79, 79);
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s;
+    gap: 8px; // Cách giữa icon và text
+  
+    &:hover {
+      background-color: #e60000;
+
+    }
+  
+    &:active {
+    }
+  
+    & svg {
+      transition: transform 0.2s ease;
+    }
+  
+    &:hover svg {
+      transform: scale(1.2); // Phóng to icon khi hover
+    }
+  
+    &.liked {
+      background-color: #4caf50;
+  
+      &:hover {
+        background-color: #3e8e41;
+      }
+    }
+  
+    &.liked svg {
+      color: #fff;
+    }
+  }
+.like-btned{
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s;
+    gap: 8px; // Cách giữa icon và text
+    &:hover{
+      color: red;
+    }
+}
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .like-btn svg {
+    animation: pulse 0.5s ease;
+  }
+  
+  .like-btn:active svg {
+    animation: none; /* Ngừng pulse khi nhấn */
+  }
+  
+  

@@ -1,0 +1,69 @@
+.country-container {
+  background-color: #000;
+  color: #fff;
+  margin-top: 30px;
+
+  h1 {
+    color: white;
+    font-size: 24px;
+    margin-left: 30px;
+  }
+}
+
+.country-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); /* Điều chỉnh để các ô có chiều rộng đồng đều */
+  gap: 20px;
+  justify-items: stretch; 
+  padding: 12px 40px;
+}
+
+.country-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  border: 2px solid #fff;
+  color: #fff;
+  text-decoration: none;
+  background-color: transparent;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  text-align: center; /* Căn giữa nội dung */
+  
+  width: 100%; /* Đảm bảo mỗi ô có chiều rộng bằng nhau */
+  box-sizing: border-box; /* Đảm bảo padding không ảnh hưởng đến chiều rộng */
+
+  &:hover {
+    color: red;
+    border-color: red;
+    background-color: #111;
+  }
+
+  .country-flag {
+    width: 50px; /* Cờ có kích thước nhỏ gọn */
+    height: 35px;
+    object-fit: cover;
+    margin-right: 10px; /* Khoảng cách giữa cờ và tên */
+    border-radius: 8px;
+  }
+
+  .country-name {
+    font-weight: 600;
+    text-align: center;
+    font-size: 14px;
+    white-space: nowrap; /* Đảm bảo tên quốc gia không bị ngắt dòng */
+
+    &:hover {
+      color: #ff0000;
+    }
+  }
+}
+
+.country-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center; /* Căn giữa nội dung của thẻ */
+  width: 100%;
+}

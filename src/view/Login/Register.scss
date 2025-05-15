@@ -1,0 +1,121 @@
+$primary-color: red;
+$background-dark: rgba(0, 0, 0, 0.8);
+$input-bg: #333;
+$text-color: white;
+
+.register {
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .register-container {
+    background: $background-dark;
+    padding: 30px;
+    width: 60vh;
+    text-align: center;
+
+    .form {
+      display: flex;
+      flex-direction: column;
+
+      .title {
+        color: $text-color;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .input-group {
+        margin-bottom: 15px;
+        text-align: left;
+
+        label {
+          font-size: 14px;
+          display: block;
+          margin-bottom: 5px;
+          color: white;
+        }
+
+        input {
+          width: 100%;
+          padding: 10px;
+          background: $input-bg;
+          border: none;
+          color: $text-color;
+        }
+      }
+      .remember-me{
+        display: flex;
+        align-items: center;
+        gap: 8px;             
+        color: white;
+        font-size: 14px;
+        margin: 10px 0;
+        flex-wrap: nowrap;       
+        white-space: nowrap;      
+        }
+      .submit-button {
+        background: $primary-color;
+        color: $text-color;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        margin-top: 12px;
+
+        &:hover {
+          background: darken($primary-color, 10%);
+        }
+      }
+
+      .login-text {
+        color: $text-color;
+        margin-top: 10px;
+
+        a {
+          color: lighten($primary-color, 20%);
+          text-decoration: none;
+
+          &:hover {
+            color: lighten($primary-color, 30%);
+          }
+        }
+      }
+    }
+  }
+
+  // Responsive styles for mobile
+  @media (max-width: 768px) {
+    .register-container {
+      width: 90%;
+      padding: 20px;
+
+      .form {
+        .title {
+          font-size: 18px;
+        }
+
+        .input-group {
+          label {
+            font-size: 12px;
+          }
+
+          input {
+            padding: 8px;
+          }
+        }
+
+        .submit-button {
+          padding: 8px;
+        }
+
+        .login-text {
+          font-size: 14px;
+
+          a {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}

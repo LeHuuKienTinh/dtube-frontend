@@ -1,0 +1,46 @@
+
+.device-wrapper{
+  h2{
+    color: #e00a0a;
+    font-size: 24px;
+    font-weight: 700;
+  }
+  .device-main{
+    .device-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid #cf0c0c; // border cho toàn bảng
+    
+      th, td {
+        border: 1px solid #fc8383; // thêm border rõ ràng cho cả thead/tbody
+        padding: 14px 20px;
+        text-align: left;
+      }
+    
+      thead {
+        background-color: #db0000eb;
+        
+      }
+    
+      th {
+        color: white !important;
+        font-weight: 500;
+      }
+    
+      tr:hover td {
+        background-color: #fff0f0;
+      }
+    }
+    p {
+      margin-top: 12px;
+      font-size: 15px;
+      font-weight: 500;
+      color: #d90606;
+      background-color: #fff4f4;
+      padding: 10px 14px;
+      border-left: 4px solid #e50914;
+      border-radius: 4px;
+      display: inline-block;
+    }
+  }
+}
