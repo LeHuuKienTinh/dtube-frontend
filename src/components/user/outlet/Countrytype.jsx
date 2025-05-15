@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Menu from '../../../view/user/Menu';
-import './countrytype.scss';
+import './Countrytype.scss';
 import axiosInstance from '../../../service/axiosInstance';
 
 const Countrytype = () => {
