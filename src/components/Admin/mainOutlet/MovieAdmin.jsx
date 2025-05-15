@@ -1,6 +1,6 @@
 import React from 'react'
 import './MovieAdmin.scss'
-import Menumovie from '../movieManage/menumovie'
+import Menumovie from '../movieManage/Menumovie'
 import { Outlet } from 'react-router-dom'
 const MovieAdmin = () => {
   return (
