@@ -42,11 +42,7 @@ const Login = () => {
       const result = await login(credentials);
 
       if (result.success) {
-        const { token, user } = result;
-
-        // Lưu token và thông tin người dùng vào localStorage
-        localStorage.setItem("token", token);
-        localStorage.setItem("user", JSON.stringify(user));
+        const user = result.user;
 
         const type = user.type;
         // Chuyển hướng người dùng theo loại

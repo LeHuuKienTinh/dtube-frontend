@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axiosInstance from '../../service/axiosInstance';
-
+import { useAuth } from '../../contexts/AuthProvider';
 const MainQR = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -9,6 +9,7 @@ const MainQR = () => {
   const [status, setStatus] = useState('pending');
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const { updateUser } = useAuth();
 
   const bankCode = "MB";
   const accountNumber = "1234567890555";
@@ -37,12 +38,9 @@ const MainQR = () => {
           clearInterval(intervalId);
           setShowModal(true);
 
-          // Cập nhật user mới
-          const userStr = localStorage.getItem('user');
-          const userId = JSON.parse(userStr).id;
-          const userRes = await axiosInstance.get(`/api/auth/me/${userId}`);
-          const userData = userRes.data;
-          localStorage.setItem('user', JSON.stringify(userData));
+          if (data.user) {
+            updateUser(data.user); // Đảm bảo backend trả về user mới
+          }
         }
       } catch (err) {
         setError(err.message);
@@ -56,7 +54,7 @@ const MainQR = () => {
     intervalId = setInterval(checkStatus, 5000);
 
     return () => clearInterval(intervalId);
-  }, [note]);
+  }, [note, updateUser]);
 
 
 

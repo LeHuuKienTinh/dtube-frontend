@@ -45,59 +45,64 @@ export const AuthProvider = ({ children }) => {
   };
 
   // Đăng nhập
-// Đăng nhập
-const login = async (credentials) => {
-  try {
-    const response = await axiosInstance.post('/api/auth/login', credentials);
-    const { accessToken, ...userData } = response.data;
-
-    // Lưu token + user vào localStorage
-    localStorage.setItem('token', accessToken);
-    localStorage.setItem('user', JSON.stringify(userData));
-    setUser(userData);
-
-    // 👇 Gửi thông tin thiết bị sau khi login
+  // Đăng nhập
+  const login = async (credentials) => {
     try {
-      const deviceName = navigator.userAgent || 'Unknown Device';
-      await axiosInstance.post('/api/device', {
-        user_id: userData.id,
-        device_name: deviceName
-      });
-      console.log("✅ Đã ghi nhận thiết bị");
-    } catch (deviceError) {
-      console.error("❌ Ghi nhận thiết bị thất bại:", deviceError);
+      const response = await axiosInstance.post('/api/auth/login', credentials);
+      const { accessToken, ...userData } = response.data;
+
+      // Lưu token + user vào localStorage
+      localStorage.setItem('token', accessToken);
+      localStorage.setItem('user', JSON.stringify(userData));
+      setUser(userData);
+
+      // 👇 Gửi thông tin thiết bị sau khi login
+      try {
+        const deviceName = navigator.userAgent || 'Unknown Device';
+        await axiosInstance.post('/api/device', {
+          user_id: userData.id,
+          device_name: deviceName
+        });
+        console.log("✅ Đã ghi nhận thiết bị");
+      } catch (deviceError) {
+        console.error("❌ Ghi nhận thiết bị thất bại:", deviceError);
+      }
+
+      return { success: true, user: userData };
+    } catch (error) {
+      return {
+        success: false,
+        message: error.response?.data?.message || 'Đăng nhập thất bại',
+        error: error.response?.data
+      };
+    }
+  };
+  const logout = async () => {
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    const userId = storedUser?.id;
+    const deviceName = navigator.userAgent;
+
+    if (userId) {
+      try {
+        await axiosInstance.delete(`/api/device/${userId}`, {
+          data: { device_name: deviceName },
+        });
+        console.log('✅ Đã xóa thiết bị khi logout');
+      } catch (err) {
+        console.error('❌ Lỗi khi xóa thiết bị:', err.response?.data || err.message);
+      }
     }
 
-    return { success: true, user: userData };
-  } catch (error) {
-    return {
-      success: false,
-      message: error.response?.data?.message || 'Đăng nhập thất bại',
-      error: error.response?.data
-    };
-  }
-};
-const logout = async () => {
-  const storedUser = JSON.parse(localStorage.getItem('user'));
-  const userId = storedUser?.id;
-  const deviceName = navigator.userAgent;
-
-  if (userId) {
-    try {
-      await axiosInstance.delete(`/api/device/${userId}`, {
-        data: { device_name: deviceName },
-      });
-      console.log('✅ Đã xóa thiết bị khi logout');
-    } catch (err) {
-      console.error('❌ Lỗi khi xóa thiết bị:', err.response?.data || err.message);
-    }
-  }
-  
-  localStorage.removeItem('token');
-  localStorage.removeItem('user');
-  setUser(null);
-};
-
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    setUser(null);
+  };
+  const updateUser = (newUserData) => {
+    const oldUser = user || {};
+    const updatedUser = { ...oldUser, ...newUserData };
+    setUser(updatedUser);
+    localStorage.setItem('user', JSON.stringify(updatedUser));
+  };
 
   const value = {
     user,
@@ -105,6 +110,7 @@ const logout = async () => {
     register,
     login,
     logout,
+    updateUser,
     isAuthenticated: !!user,
     isAdmin: user?.type === '1',
     isUser: user?.type === '1' || user?.type === '2',
