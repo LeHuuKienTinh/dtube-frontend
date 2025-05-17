@@ -1,66 +1,55 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import axiosInstance from '../../service/axiosInstance';
-import { useAuth } from '../../contexts/AuthProvider';
-import './MainQR.scss';
+import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const MainQR = () => {
-  const { id } = useParams();
-  const { user } = useAuth();
-  const [pakage, setPakage] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
+  const location = useLocation();
   const navigate = useNavigate();
+  const { pakageName, amount, note, orderId } = location.state || {};
 
-  useEffect(() => {
-    // Gọi API để lấy thông tin gói
-    axiosInstance.get(`/api/pakage/${id}`)
-      .then((res) => {
-        setPakage(res.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Lỗi lấy chi tiết gói:", err);
-        setError("Không lấy được thông tin gói.");
-        setLoading(false);
-      });
-  }, [id]);
+  const bankCode = "MB";
+  const accountNumber = "1234567890555";
+  const accountName = "Le Huu Kien Tinh";
 
-  useEffect(() => {
-    if (pakage) {
-      const initiateVnpayPayment = async () => {
-        try {
-          const response = await axiosInstance.post('/api/payment/create-payment-url', {
-            amount: Number(pakage.gia_chinh),
-            bankCode: 'NCB', // hoặc để trống: '', tùy chọn
-            orderDescription: `${user?.mail || 'guest'} mua gói ${pakage.ten_goi}`,
-            orderType: 'other',
-            language: 'vn',
-          });
+  if (!amount || !note) {
+    return <div style={{ padding: 20 }}>Không có thông tin đơn hàng. <button onClick={() => navigate(-1)}>Quay lại</button></div>;
+  }
 
-          if (response.data?.success) {
-            window.location.href = response.data.data.payment_url;
-          } else {
-            alert("Tạo thanh toán thất bại.");
-          }
-        } catch (err) {
-          console.error("Lỗi tạo URL thanh toán:", err.response || err.message || err);
-          alert("Lỗi kết nối tới hệ thống thanh toán.");
-        }
-      };
-
-      initiateVnpayPayment();
-    }
-  }, [pakage, user]);
-
-  if (loading) return <div className="loading-text">Đang tải chi tiết gói...</div>;
-  if (error) return <div className="loading-text">{error}</div>;
-  if (!pakage) return <div className="loading-text">Không tìm thấy gói.</div>;
+  const qrUrl = `https://img.vietqr.io/image/${bankCode}-${accountNumber}-compact.png?amount=${amount}&accountName=${encodeURIComponent(accountName)}&addInfo=${encodeURIComponent(note)}`;
 
   return (
-    <div className="pakage-detail">
-      <h2>Đang chuyển hướng tới cổng thanh toán...</h2>
+    <div style={{ padding: '30px', maxWidth: 600, margin: '0 auto' }}>
+      <h2>Thanh toán gói: <span style={{ color: '#007BFF' }}>{pakageName}</span></h2>
+      <table style={{ marginTop: 20, width: '100%' }}>
+        <tbody>
+          <tr>
+            <td><strong>Số tiền:</strong></td>
+            <td>{amount.toLocaleString()} VND</td>
+          </tr>
+          <tr>
+            <td><strong>Nội dung CK:</strong></td>
+            <td>{note}</td>
+          </tr>
+          <tr>
+            <td><strong>Ngân hàng:</strong></td>
+            <td>{bankCode}</td>
+          </tr>
+          <tr>
+            <td><strong>Số tài khoản:</strong></td>
+            <td>{accountNumber}</td>
+          </tr>
+          <tr>
+            <td><strong>Chủ tài khoản:</strong></td>
+            <td>{accountName}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style={{ textAlign: 'center', marginTop: 30 }}>
+        <img src={qrUrl} alt="QR thanh toán" style={{ maxWidth: 300 }} />
+        <p style={{ marginTop: 20, color: '#666' }}>
+          Vui lòng chuyển khoản đúng <strong>số tiền</strong> và <strong>nội dung</strong> để hệ thống tự động xác nhận đơn hàng #{orderId}.
+        </p>
+      </div>
     </div>
   );
 };

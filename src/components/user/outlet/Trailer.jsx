@@ -97,6 +97,7 @@ const Trailer = () => {
       .then(res => {
         const { movie, episodes } = res.data;
         console.log("đây là chi tiết phim", movie);
+        console.log("moviename", movieName)
         setMovie(movie);
         setEpisodes(episodes?.[0]?.server_data || []);
         setTrailerUrl(movie?.trailer_url || '');
