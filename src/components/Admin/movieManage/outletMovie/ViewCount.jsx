@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../../../../service/axiosInstance'; // dùng instance có JWT nếu cần
 import './ViewCount.scss'
+import { toast } from 'react-toastify';
+
 const ViewCount = () => {
   const [views, setViews] = useState([]);
   const [filteredViews, setFilteredViews] = useState([]);
@@ -15,7 +17,6 @@ const ViewCount = () => {
       const res = await axios.get('/api/view');
       setViews(res.data);
       setFilteredViews(res.data);
-      console.log("view", res.data)
     };
     fetchViews();
   }, []);
@@ -69,9 +70,6 @@ const ViewCount = () => {
           onChange={e => setEpisodeFilter(e.target.value)}
           className="input-film"
         />
-        <button onClick={handleFilter} className="btn-filter">
-          Lọc
-        </button>
         <button onClick={handleSort} className="btn-sort">
           Sắp xếp {sortAsc ? '↓' : '↑'}
         </button>

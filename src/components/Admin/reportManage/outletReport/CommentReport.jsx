@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axiosInstance from '../../../../service/axiosInstance';
 import './CommentReport.scss';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const CommentReport = () => {
     const [reports, setReports] = useState([]);
@@ -46,6 +47,8 @@ const CommentReport = () => {
                     rep.id_report === id ? { ...rep, status: 1 } : rep
                 )
             );
+            toast.success("Đổi trạng thái thành công!")
+
         } catch (err) {
             console.error('Lỗi khi cập nhật trạng thái:', err);
         }
@@ -55,6 +58,7 @@ const CommentReport = () => {
         try {
             await axiosInstance.delete(`/api/reports/delete/${id}`);
             setReports(r => r.filter(rep => rep.id_report !== id));
+            toast.success("Xóa báo cáo thành công!")
         } catch (err) {
             console.error('Lỗi khi xóa báo cáo:', err);
         }

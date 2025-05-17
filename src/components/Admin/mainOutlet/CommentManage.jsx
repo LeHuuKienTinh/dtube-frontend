@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axiosInstance from '../../../service/axiosInstance';
 import './CommentManage.scss';
+import { toast } from 'react-toastify';
 
 const CommentManage = () => {
   const [badWords, setBadWords] = useState([]);
@@ -25,8 +26,10 @@ const CommentManage = () => {
       await axiosInstance.post('/api/admin/badwords', { word: newWord });
       setNewWord('');
       fetchBadWords();
+      toast.success("Thêm từ cấm thành công!")
     } catch (error) {
-      console.error('Lỗi khi thêm từ cấm:', error);
+      toast.error("Có lỗi xảy ra!")
+
     }
   };
 
@@ -35,6 +38,7 @@ const CommentManage = () => {
     try {
       await axiosInstance.delete(`/api/admin/badwords/${id}`);
       fetchBadWords();
+      toast.success("Xóa từ cấm thành công!")
     } catch (error) {
       console.error('Lỗi khi xóa từ cấm:', error);
     }
@@ -48,6 +52,7 @@ const CommentManage = () => {
       setEditingWordId(null);
       setEditValue('');
       fetchBadWords();
+      toast.success("Sửa từ cấm thành công!")
     } catch (error) {
       console.error('Lỗi khi cập nhật từ cấm:', error);
     }

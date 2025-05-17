@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axiosInstance from '../../../../service/axiosInstance'; // hoặc đường dẫn đúng với project của bạn
 import './Banfilm.scss';
+import { toast } from 'react-toastify';
 
 const Banfilm = () => {
   const [bannedMovies, setBannedMovies] = useState([]);
@@ -28,8 +29,9 @@ const Banfilm = () => {
       await axiosInstance.delete(`/api/admin/banmovie/${id}`);
       setBannedMovies(prev => prev.filter(movie => movie.id !== id));
       setFilteredMovies(prev => prev.filter(movie => movie.id !== id));
+      toast.success("Bỏ cấm phim thành công!")
     } catch (err) {
-      setError('Lỗi khi bỏ chặn phim');
+      toast.error("Có lỗi xảy ra!")
       console.error(err);
     }
   };

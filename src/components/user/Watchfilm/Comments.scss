@@ -229,3 +229,32 @@
       transform: translateX(0);
     }
   }
+
+  .btns{
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+
+    .cancel-btn, .submit-btn {
+      padding: 8px 16px;
+      font-size: 14px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .cancel-btn {
+      background-color: #555;
+      color: #fff;
+    }
+
+    .submit-btn {
+      background-color: #e50914;
+      color: #fff;
+    }
+
+    .submit-btn:hover {
+      background-color: #c40812;
+    }
+  }

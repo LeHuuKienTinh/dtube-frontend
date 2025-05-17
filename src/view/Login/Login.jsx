@@ -2,6 +2,7 @@ import "./Login.scss";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useAuth } from "../../contexts/AuthProvider";
+import { toast } from 'react-toastify';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -31,12 +32,11 @@ const Login = () => {
     e.preventDefault();
 
     if (!credentials.username || !credentials.password) {
-      setError("Vui lòng điền đầy đủ thông tin");
+      toast.warning("Vui lòng điền đầy đủ thông tin")
       return;
     }
 
     setIsLoading(true);
-    setError("");
 
     try {
       const result = await login(credentials);
@@ -50,23 +50,23 @@ const Login = () => {
 
         const type = user.type;
         // Chuyển hướng người dùng theo loại
-        if (type === "1") navigate("/admin/dashboard");
-        else if (type === "2") navigate("/");
-        else if (type === "3") navigate("/pay");
+        if (type === "1") { toast.success("Xin chào! ADMIN"); navigate("/admin/dashboard"); }
+        else if (type === "2") { toast.success("Đăng nhập thành công"); navigate("/"); }
+        else if (type === "3") { toast.warning("Vui lòng chọn gói để tiếp tục"); navigate("/pay"); }
         else if (type === "4") navigate("/ban");
         else navigate("/intro");
       } else {
-        setError(result.message || "Đăng nhập thất bại");
+        toast.error("Username hoặc mật khẩu không đúng!");
       }
     } catch (err) {
       if (err.response && err.response.data && err.response.data.message) {
-        setError(err.response.data.message);
+        toast.error(err.response.data.message);
       } else if (err.message === "Network Error") {
-        setError(
+        toast.error(
           "Không thể kết nối đến máy chủ. Vui lòng kiểm tra kết nối mạng."
         );
       } else {
-        setError("Đã xảy ra lỗi không xác định. Vui lòng thử lại.");
+        toast.error("Đã xảy ra lỗi không xác định. Vui lòng thử lại.");
       }
     } finally {
       setIsLoading(false);

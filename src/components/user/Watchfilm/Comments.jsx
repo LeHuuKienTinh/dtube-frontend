@@ -4,6 +4,7 @@ import axiosInstance from "../../../service/axiosInstance";
 import { useAuth } from '../../../contexts/AuthProvider';
 import moment from 'moment';
 import './Comments.scss';
+import { toast } from 'react-toastify';
 
 const Comments = ({ currentTime, movieSlug, episodeSlug, moviename, episodecurrently, movieslug }) => {
   const [comments, setComments] = useState([]);
@@ -124,6 +125,8 @@ const Comments = ({ currentTime, movieSlug, episodeSlug, moviename, episodecurre
         status: 0
       });
       setReportSuccess(true);
+      toast.success("Gửi báo cáo thành công!")
+
     } catch (err) {
       console.error(err);
       setReportError('Gửi không thành công');
@@ -152,8 +155,8 @@ const Comments = ({ currentTime, movieSlug, episodeSlug, moviename, episodecurre
           {filterComments().map((c, i) => (
             <div key={c.id} className="comment-item" style={{ animationDelay: `${i * 0.05}s` }}>
               <div className="comment-header">
-                <strong>{c.name}</strong>
-                <span>({c.type === 1 ? 'Admin' : 'User'})</span>
+                <strong className='me-1'>{c.name}</strong>
+                <span> {c.type === "1" ? '(Admin)' : ""}</span>
               </div>
               <p className="comment-text">{c.comment}</p>
               <div className="comment-footer">
@@ -187,27 +190,21 @@ const Comments = ({ currentTime, movieSlug, episodeSlug, moviename, episodecurre
       {reportOpen && (
         <div className="report-modal-overlay" onClick={closeReport}>
           <div className="report-modal" onClick={e => e.stopPropagation()}>
-            {reportSuccess ? (
-              <>
-                <p>✅ Cảm ơn bạn đã báo cáo. Chúng tôi sẽ xem xét.</p>
-                <button onClick={closeReport}>Đóng</button>
-              </>
-            ) : (
-              <form onSubmit={submitReport}>
-                <h3>Báo cáo bình luận</h3>
-                <textarea
-                  value={reportDesc}
-                  onChange={e => { setReportDesc(e.target.value); setReportError(''); }}
-                  rows="4"
-                  placeholder="Mô tả lý do..."
-                />
-                {reportError && <p className="error">{reportError}</p>}
-                <div className="btns">
-                  <button type="button" onClick={closeReport}>Hủy</button>
-                  <button type="submit">Gửi</button>
-                </div>
-              </form>
-            )}
+
+            <form onSubmit={submitReport}>
+              <h3>Báo cáo bình luận</h3>
+              <textarea
+                value={reportDesc}
+                onChange={e => { setReportDesc(e.target.value); setReportError(''); }}
+                rows="4"
+                placeholder="Mô tả lý do..."
+              />
+              {reportError && <p className="error">{reportError}</p>}
+              <div className="btns">
+                <button type="button" className='cancel-btn' onClick={closeReport}>Hủy</button>
+                <button type="submit" className="submit-btn">Gửi</button>
+              </div>
+            </form>
           </div>
         </div>
       )}

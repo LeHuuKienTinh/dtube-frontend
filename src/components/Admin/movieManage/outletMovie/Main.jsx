@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axiosInstance from '../../../../service/axiosInstance';
 import './Main.scss';
 import { FaBan } from "react-icons/fa6";
+import { toast } from 'react-toastify';
 
 let typingTimer;
 
@@ -84,13 +85,12 @@ const Main = () => {
       setFilms(prev =>
         prev.map(f => f.id === banData.id ? { ...f, isBanned: true } : f)
       );
-
       setBannedMovies(prev => [...prev, { id: banData.id, slug: banData.slug }]);
-
       setShowModal(false);
+      toast.success("Đã thêm vào danh sách cấm!")
     } catch (err) {
       console.error(err);
-      alert("Không thể cấm phim. Vui lòng thử lại.");
+      toast.error("Xảy ra lỗi khi cấm phim!")
     }
   };
   useEffect(() => {

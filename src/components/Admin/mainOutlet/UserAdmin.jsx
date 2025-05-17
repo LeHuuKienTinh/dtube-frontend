@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axiosInstance from '../../../service/axiosInstance';
 import './UserAdmin.scss';
+import { toast } from 'react-toastify';
 
 const API_URL = 'api/admin/users';
 
@@ -23,6 +24,8 @@ const UserAdmin = () => {
   const [editingUser, setEditingUser] = useState(null);
   const [search, setSearch] = useState('');
   const [showModal, setShowModal] = useState(false);
+  const [showModalDelete, setShowModalDelete] = useState(false);
+  const [userToDelete, setUserToDelete] = useState(null);
 
   useEffect(() => {
     fetchUsers();
@@ -67,6 +70,11 @@ const UserAdmin = () => {
     console.log(user)
 
   };
+  const openDeleteModal = (user) => {
+    setUserToDelete(user);
+    setShowModalDelete(true);
+  };
+
   useEffect(() => {
     console.log("showModal changed to:", showModal);
   }, [showModal]);
@@ -87,17 +95,20 @@ const UserAdmin = () => {
         .then(() => {
           fetchUsers();
           closeModal();
+          toast.success("Lưu thay đổi thành công!")
         })
         .catch(err => console.error('Lỗi khi cập nhật người dùng:', err));
     }
   };
 
   const handleDelete = (id) => {
-    if (window.confirm('Bạn có chắc muốn xóa người dùng này?')) {
-      axiosInstance.delete(`${API_URL}/${id}`)
-        .then(() => fetchUsers())
-        .catch(err => console.error('Lỗi khi xóa người dùng:', err));
-    }
+    axiosInstance.delete(`${API_URL}/${id}`)
+      .then(() => {
+        fetchUsers();
+        toast.success("Xóa người dùng thành công!")
+      })
+
+      .catch(err => console.error('Lỗi khi xóa người dùng:', err));
   };
 
   const filteredUsers = users.filter(user =>
@@ -144,7 +155,7 @@ const UserAdmin = () => {
                   <td className='text-center'>{deviceCounts[user.id] ?? '...'}/6</td>
                   <td >
                     <button className="edit-btn" onClick={() => openEditModal(user)}>Sửa</button>
-                    <button className="delete-btn" onClick={() => handleDelete(user.id)}>Xóa</button>
+                    <button className="delete-btn" onClick={() => openDeleteModal(user)}>Xóa</button>
                   </td>
                 </tr>
               ))
@@ -193,6 +204,21 @@ const UserAdmin = () => {
                 <button type="submit">Lưu</button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+      {showModalDelete && userToDelete && (
+        <div className="modal-overlay show">
+          <div className="modal-user">
+            <h2>Xác nhận xóa người dùng</h2>
+            <p>Xóa người dùng <b>{userToDelete.name}</b>?</p>
+            <div className="modal-actions">
+              <button type="button" onClick={() => setShowModalDelete(false)}>Hủy</button>
+              <button type="button" onClick={() => {
+                handleDelete(userToDelete.id);
+                setShowModalDelete(false);
+              }}>Xóa</button>
+            </div>
           </div>
         </div>
       )}

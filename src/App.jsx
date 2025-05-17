@@ -55,7 +55,8 @@ import ViewCount from "./components/Admin/movieManage/outletMovie/ViewCount";
 import MovieReport from "./components/Admin/reportManage/outletReport/MovieReport";
 import EpisodeReport from "./components/Admin/reportManage/outletReport/EpisodeReport";
 import CommentReport from "./components/Admin/reportManage/outletReport/CommentReport";
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
     <>
@@ -171,8 +172,20 @@ function App() {
             </Route>
             <Route path="*" element={<Introduction />} />
           </Routes>
+          <ToastContainer
+            position="top-right"
+            autoClose={1500}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark" // hoặc 'dark', 'colored'
+          />
         </Router>
-      </AuthProvider>
+      </AuthProvider >
     </>
   );
 }

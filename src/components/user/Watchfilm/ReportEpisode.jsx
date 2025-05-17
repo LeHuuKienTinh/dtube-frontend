@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import axiosInstance from "../../../service/axiosInstance";
 import { useAuth } from "../../../contexts/AuthProvider";
 import './ReportEpisode.scss'
+import { toast } from 'react-toastify';
 
 const ReportEpisode = ({ moviename, episodecurrently, episodeName, setShowReportEpisode, movieslug }) => {
     const { user } = useAuth();
@@ -29,7 +30,7 @@ const ReportEpisode = ({ moviename, episodecurrently, episodeName, setShowReport
                 navigate: navigateUrl,
             });
             setSuccess(true);
-            setError("");
+            toast.success("Gửi báo cáo thành công!")
         } catch (err) {
             console.error("Lỗi khi gửi báo cáo:", err);
             setError("Không thể gửi báo cáo. Vui lòng thử lại.");
@@ -40,9 +41,7 @@ const ReportEpisode = ({ moviename, episodecurrently, episodeName, setShowReport
         <div className=".report-modal-overlay">
             <div className="report-modal">
                 <h3>Báo cáo tập phim</h3>
-                {success ? (
-                    <p className="success-message">✅ Cảm ơn bạn đã báo cáo! Chúng tôi sẽ xem xét sớm nhất.</p>
-                ) : (
+                
                     <form onSubmit={handleSubmit}>
                         <textarea
                             value={description}
@@ -56,7 +55,6 @@ const ReportEpisode = ({ moviename, episodecurrently, episodeName, setShowReport
                             <button className="submit-btn" type="submit">Gửi báo cáo</button>
                         </div>
                     </form>
-                )}
             </div>
         </div>
     );

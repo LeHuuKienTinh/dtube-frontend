@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Register.scss";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from '../../contexts/AuthProvider';
-
+import { toast } from 'react-toastify';
 const Register = () => {
   const { register, isAuthenticated } = useAuth();
   const navigate = useNavigate();
@@ -33,8 +33,10 @@ const Register = () => {
 
     if (response.success) {
       navigate('/login');
+      toast.success("Đăng ký thành công!")
     } else {
       setError(response.message);
+      toast.error(response.message)
     }
   };
 

@@ -123,13 +123,11 @@ const PackageAdmin = () => {
           placeholder="Chọn kiểu thời gian"
         >s
           <option className="option-time" value="">Chọn kiểu thời gian</option>
-          <option value="24 Giờ"> 24 Giờ</option>
-          <option value="7 Ngày">7 Ngày</option>
-          <option value="1 Tháng">1 Tháng</option>
-          <option value="3 Tháng">3 Tháng</option>
-          <option value="6 Tháng">6 Tháng</option>
-          <option value="9 Tháng">9 Tháng</option>
-          <option value="1 Năm">1 Năm</option>
+          <option value="1">1 Tháng</option>
+          <option value="3">3 Tháng</option>
+          <option value="6">6 Tháng</option>
+          <option value="9">9 Tháng</option>
+          <option value="12">1 Năm</option>
         </select>
 
         <button type="submit">{isEdit ? "Cập nhật" : "Thêm mới"}</button>
@@ -154,7 +152,7 @@ const PackageAdmin = () => {
               <td>{item.ten_pakage}</td>
               <td>{parseFloat(item.gia_truoc_khi_giam).toLocaleString()}</td>
               <td>{parseFloat(item.gia_chinh).toLocaleString()}</td>
-              <td>{item.kieu_thoi_gian}</td>
+              <td>{item.kieu_thoi_gian} tháng</td>
               <td>
                 <button onClick={() => handleEdit(item)}>Sửa</button>
                 <button onClick={() => handleDelete(item.id)}>Xóa</button>

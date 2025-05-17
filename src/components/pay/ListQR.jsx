@@ -56,7 +56,7 @@ const ListQR = () => {
               Giảm: {calculateDiscount(item.gia_truoc_khi_giam, item.gia_chinh)}%
             </p>
           </div>
-          <p className="thoi-gian">Thời gian: {item.kieu_thoi_gian}</p>
+          <p className="thoi-gian">Thời gian: {item.kieu_thoi_gian} tháng</p>
 
           <div className="pakage-actions">
             <button className="mua-button" onClick={() => handleBuy(item)}>

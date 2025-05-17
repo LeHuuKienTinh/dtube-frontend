@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axiosInstance from '../../../../service/axiosInstance';
 import './MovieReport.scss';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const MovieReport = () => {
     const [reports, setReports] = useState([]);
@@ -19,7 +20,6 @@ const MovieReport = () => {
             // Lấy tất cả báo cáo phim
             const res = await axiosInstance.get('/api/reports/type/1');
             setReports(res.data.reports || []);
-            console.log("iinforppp", res.data.reports)
         } catch (err) {
             console.error('Lỗi khi lấy báo cáo phim:', err);
         } finally {
@@ -31,7 +31,6 @@ const MovieReport = () => {
         try {
             const res = await axiosInstance.get('/api/admin/users')
             setUsers(res.data.users)
-            console.log("nguoi dung", res.data.users)
         } catch (err) {
             console.error('Lỗi khi lấy ds người dùng:', err);
         } finally {
@@ -51,8 +50,10 @@ const MovieReport = () => {
                     rep.id_report === id ? { ...rep, status: 1 } : rep
                 )
             );
+            toast.success("Đổi trạng thái thành công!")
         } catch (err) {
-            console.error('Lỗi khi cập nhật trạng thái:', err);
+            toast.error("Xảy ra lỗi khi cập nhật trạng thái!")
+
         }
     };
 
@@ -60,6 +61,8 @@ const MovieReport = () => {
         try {
             await axiosInstance.delete(`/api/reports/delete/${id}`);
             setReports(r => r.filter(rep => rep.id_report !== id));
+            toast.success("Xóa báo cáo thành công!")
+
         } catch (err) {
             console.error(err);
         }

@@ -4,6 +4,7 @@ import axiosInstance from '../../../service/axiosInstance';
 import './Trailler.scss';
 import { useAuth } from '../../../contexts/AuthProvider';
 import { IoIosInformationCircle } from "react-icons/io";
+import { toast } from 'react-toastify';
 
 const Trailer = () => {
   const { movieName } = useParams();
@@ -39,7 +40,7 @@ const Trailer = () => {
       });
       setReportStatus('success');
       setShowReportModal(false);  // Đóng modal sau khi gửi báo cáo thành công
-      console.log(movie.name)
+      toast.success("Gửi báo cáo thành công!")
     } catch (err) {
       setReportStatus('error');
       console.error('Lỗi khi gửi báo cáo:', err);
