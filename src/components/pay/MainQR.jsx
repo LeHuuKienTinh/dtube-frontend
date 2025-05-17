@@ -25,39 +25,39 @@ const MainQR = () => {
   const qrUrl = `https://img.vietqr.io/image/${bankCode}-${accountNumber}-compact.png?amount=${amount}&accountName=${encodeURIComponent(accountName)}&addInfo=${encodeURIComponent(note)}`;
 
   useEffect(() => {
-    const intervalId = setInterval(async () => {
-      try {
-        const res = await axiosInstance.get(`/api/order/${note}/status`);
-        const data = res.data; // ✅ Lấy luôn từ res.data
-        setStatus(data.status);
-        console.log('API status:', data.status);
-        if (data.status === 'paid') {
-          clearInterval(intervalId);
-          setShowModal(true); // ✅ Hiện modal
-        }
-      } catch (err) {
-        setError(err.message);
-      }
-    }, 5000);
+    let intervalId;
 
-    // Check ngay lần đầu
-    (async () => {
+    const checkStatus = async () => {
       try {
         const res = await axiosInstance.get(`/api/order/${note}/status`);
         const data = res.data;
         setStatus(data.status);
-        console.log('Initial API status:', data.status);
+        console.log('API status:', data.status);
         if (data.status === 'paid') {
           clearInterval(intervalId);
           setShowModal(true);
+
+          // Cập nhật user mới
+          const userStr = localStorage.getItem('user');
+          const userId = JSON.parse(userStr).id;
+          const userRes = await axiosInstance.get(`/api/auth/me/${userId}`);
+          const userData = userRes.data;
+          localStorage.setItem('user', JSON.stringify(userData));
         }
       } catch (err) {
         setError(err.message);
       }
-    })();
+    };
+
+    // Gọi ngay lần đầu
+    checkStatus();
+
+    // Dùng setInterval gọi hàm async
+    intervalId = setInterval(checkStatus, 5000);
 
     return () => clearInterval(intervalId);
   }, [note]);
+
 
 
   return (
