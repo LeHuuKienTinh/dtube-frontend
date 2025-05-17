@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import axiosInstance from '../../service/axiosInstance';
 
 const MainQR = () => {
   const location = useLocation();
@@ -26,7 +27,7 @@ const MainQR = () => {
   useEffect(() => {
     const intervalId = setInterval(async () => {
       try {
-        const res = await fetch(`/api/order/${note}/status`);
+        const res = await axiosInstance.get(`/api/order/${note}/status`);
         if (!res.ok) throw new Error('Không tìm thấy đơn hàng');
         const data = await res.json();
         setStatus(data.status);
@@ -43,7 +44,7 @@ const MainQR = () => {
     // Check ngay lần đầu
     (async () => {
       try {
-        const res = await fetch(`/api/order/${note}/status`);
+        const res = await axiosInstance.get(`/api/order/${note}/status`);
         if (!res.ok) throw new Error('Không tìm thấy đơn hàng');
         const data = await res.json();
         setStatus(data.status);
