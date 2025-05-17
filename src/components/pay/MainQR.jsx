@@ -28,13 +28,12 @@ const MainQR = () => {
     const intervalId = setInterval(async () => {
       try {
         const res = await axiosInstance.get(`/api/order/${note}/status`);
-        if (!res.ok) throw new Error('Không tìm thấy đơn hàng');
-        const data = await res.json();
+        const data = res.data; // ✅ Lấy luôn từ res.data
         setStatus(data.status);
         console.log('API status:', data.status);
         if (data.status === 'paid') {
           clearInterval(intervalId);
-          setShowModal(true);
+          setShowModal(true); // ✅ Hiện modal
         }
       } catch (err) {
         setError(err.message);
@@ -45,8 +44,7 @@ const MainQR = () => {
     (async () => {
       try {
         const res = await axiosInstance.get(`/api/order/${note}/status`);
-        if (!res.ok) throw new Error('Không tìm thấy đơn hàng');
-        const data = await res.json();
+        const data = res.data;
         setStatus(data.status);
         console.log('Initial API status:', data.status);
         if (data.status === 'paid') {
@@ -60,6 +58,7 @@ const MainQR = () => {
 
     return () => clearInterval(intervalId);
   }, [note]);
+
 
   return (
     <div style={{ padding: '30px', maxWidth: 600, margin: '0 auto' }}>
