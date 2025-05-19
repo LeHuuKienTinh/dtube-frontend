@@ -24,7 +24,7 @@ const Login = () => {
       else if (type == "2") navigate("/");
       else if (type == "3") navigate("/pay");
       else if (type == "4") navigate("/ban");
-      else navigate("/intro");
+      else navigate("/register");
     }
   }, [navigate]);
 
@@ -54,7 +54,8 @@ const Login = () => {
       } else {
         toast.error("Username hoặc mật khẩu không đúng!");
       }
-    } catch (err) {
+    }
+    catch (err) {
       if (err.response && err.response.data && err.response.data.message) {
         toast.error(err.response.data.message);
       } else if (err.message === "Network Error") {

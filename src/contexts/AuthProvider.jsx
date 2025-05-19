@@ -56,7 +56,6 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem('user', JSON.stringify(userData));
       setUser(userData);
 
-      // 👇 Gửi thông tin thiết bị sau khi login
       try {
         const deviceName = navigator.userAgent || 'Unknown Device';
         await axiosInstance.post('/api/device', {
@@ -72,8 +71,8 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       return {
         success: false,
-        message: error.response?.data?.message || 'Đăng nhập thất bại',
-        error: error.response?.data
+        message: 'Đăng nhập thất bại',
+        error: error.response?.data,
       };
     }
   };
