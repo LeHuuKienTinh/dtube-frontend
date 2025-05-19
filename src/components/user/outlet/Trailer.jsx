@@ -24,7 +24,7 @@ const Trailer = () => {
 
   const handleReportSubmit = async () => {
     if (!reportContent) {
-      alert('Vui lòng nhập nội dung báo cáo');
+      toast.warning('Vui lòng nhập nội dung báo cáo');
       return;
     }
 
@@ -59,7 +59,7 @@ const Trailer = () => {
 
   const handleEpisodeWatch = (episode) => {
     if (!user) {
-      alert('Vui lòng đăng nhập để xem phim');
+      toast.error('Vui lòng đăng nhập để xem phim');
       return;
     }
 
@@ -74,7 +74,7 @@ const Trailer = () => {
 
   const handleContinueWatch = async () => {
     if (!user) {
-      alert('Vui lòng đăng nhập để xem phim');
+      toast.error('Vui lòng đăng nhập để xem phim');
       return;
     }
 
@@ -86,7 +86,7 @@ const Trailer = () => {
       if (epToWatch) {
         handleEpisodeWatch(epToWatch);
       } else {
-        alert('Không tìm thấy tập phim phù hợp');
+        toast.error('Không tìm thấy tập phim phù hợp');
       }
     } catch (err) {
       console.error('Lỗi khi xử lý tiếp tục xem:', err);

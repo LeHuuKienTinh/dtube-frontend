@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { FaPlay } from "react-icons/fa";
 import { IoIosInformationCircle } from "react-icons/io";
 import Buttonllike from "../../../ultis/user/Buttonllike";
+import { toast } from 'react-toastify';
 
 const HistoryCard = ({ viewType = "card" }) => {
   const [history, setHistory] = useState([]);
@@ -71,7 +72,7 @@ const HistoryCard = ({ viewType = "card" }) => {
       await axiosInstance.delete(`/api/historyfilm/history/delete/${id}`);
       // Cập nhật lại state sau khi xóa
       setHistory((prev) => prev.filter((item) => item.id !== Number(id)));
-      alert("Xóa lịch sử thành công");
+      toast.success("Xóa lịch sử thành công");
     } catch (err) {
       console.error("Lỗi khi xóa lịch sử:", err);
     }

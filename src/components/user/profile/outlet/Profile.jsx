@@ -4,7 +4,7 @@ import './Profile.scss';
 import { toast } from 'react-toastify';
 
 const Profile = () => {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
 
   const getUserType = (type) => {
     if (type == 1) return '🛡️ Admin';
@@ -20,7 +20,7 @@ const Profile = () => {
       navigator.clipboard.writeText(token);
       toast.success("Token đã được copy!")
     } else {
-      alert('⚠️ Không tìm thấy token!');
+      toast.error('⚠️ Không tìm thấy token!');
     }
   };
 
@@ -67,7 +67,7 @@ const Profile = () => {
                 <button className="copy-token-btn" onClick={handleCopyToken}>
                   📋 Lấy Mã Đăng Nhập
                 </button>
-                <button className="copy-token-btn" onClick={() => alert("🚪 Đăng xuất")}>
+                <button className="copy-token-btn" onClick={() => logout()}>
                   Đăng xuất
                 </button>
               </td>

@@ -3,6 +3,7 @@ import { useAuth } from '../../contexts/AuthProvider';
 import axiosInstance from '../../service/axiosInstance';
 import { FaHeart, FaRegHeart } from 'react-icons/fa'; // Import các icon
 import './Buttonllike.scss'; // Import CSS cho button
+import { toast } from 'react-toastify';
 
 const Buttonllike = ({ slug, name }) => {
   const { user } = useAuth();
@@ -53,7 +54,7 @@ const Buttonllike = ({ slug, name }) => {
       }
     } catch (error) {
       console.error('Không thể thêm yêu thích', error);
-      alert('Không thể thêm yêu thích');
+      toast.error('Không thể thêm yêu thích');
     } finally {
       setLoading(false);
     }
@@ -74,7 +75,7 @@ const Buttonllike = ({ slug, name }) => {
       }
     } catch (error) {
       console.error('Không thể hủy yêu thích', error);
-      alert('Không thể hủy yêu thích');
+      toast.error('Không thể hủy yêu thích');
     } finally {
       setLoading(false);
     }

@@ -78,8 +78,8 @@ const Comments = ({ currentTime, movieSlug, episodeSlug, moviename, episodecurre
     e.preventDefault();
     const txt = commentInput.trim();
     if (!txt) return;
-    if (!user) { alert('Đăng nhập để bình luận'); return; }
-    if (containsBadWord(txt)) { alert('Chứa từ cấm'); return; }
+    if (!user) { toast.error('Đăng nhập để bình luận'); return; }
+    if (containsBadWord(txt)) { toast.error('Chứa từ cấm'); return; }
 
     try {
       await axiosInstance.post('/api/comments', {

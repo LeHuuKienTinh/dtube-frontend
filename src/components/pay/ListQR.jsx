@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useOutletContext, useNavigate } from 'react-router-dom';
 import axiosInstance from '../../service/axiosInstance';
 import { useAuth } from '../../contexts/AuthProvider';
+import { toast } from 'react-toastify';
 
 const ListQR = () => {
   const { pakages, calculateDiscount } = useOutletContext();
@@ -36,7 +37,7 @@ const ListQR = () => {
       });
     } catch (err) {
       console.error("Lỗi khi tạo đơn hàng:", err);
-      alert("Không thể tạo đơn hàng. Vui lòng thử lại.");
+      toast.error("Không thể tạo đơn hàng. Vui lòng thử lại.");
     }
   };
 

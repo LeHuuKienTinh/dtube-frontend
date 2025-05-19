@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from '../../service/axiosInstance';
 import { useNavigate } from 'react-router-dom';
 import './Forgetpassword.scss';
+import { toast } from 'react-toastify';
 
 const ForgetPassword = () => {
   const [mail, setMail] = useState('');
@@ -12,10 +13,10 @@ const ForgetPassword = () => {
     try {
       await axios.post('/api/auth/forgotpassword', { mail }); // Updated API endpoint
       localStorage.setItem('reset-mail', mail);
-      alert('Đã gửi mã OTP tới email của bạn');
+      toast.success('Đã gửi mã OTP tới email của bạn');
       navigate('/verify-otp');
     } catch (err) {
-      alert(err.response?.data?.message || 'Lỗi gửi email');
+      toast.error( 'Có lỗi xay ra khi gửi email!');
     }
   };
 

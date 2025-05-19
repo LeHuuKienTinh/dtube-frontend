@@ -23,7 +23,7 @@ const ResetPassword = () => {
       localStorage.removeItem('reset-mail');
       navigate('/login');
     } catch (err) {
-      alert(err.response?.data?.message || 'Lỗi đặt lại mật khẩu');
+      toast.error('Có lỗi xảy ra khi đặt lại mật khẩu');
     }
   };
 

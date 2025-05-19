@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axiosInstance from "../../../service/axiosInstance";
 import './PackageAdmin.scss'; // nếu có dùng SCSS
+import { toast } from 'react-toastify';
 
 const PackageAdmin = () => {
   const [packages, setPackages] = useState([]);
@@ -48,23 +49,32 @@ const PackageAdmin = () => {
 
     // Kiểm tra hợp lệ
     if (!ten_pakage.trim()) {
-      alert("Tên gói không được để trống.");
+      toast.error("Tên gói không được để trống.");
       return;
     }
     if (isNaN(giaGoc) || giaGoc <= 0) {
-      alert("Giá trước khi giảm phải là số > 0.");
+      toast.error("Giá trước khi giảm phải là số > 0.");
       return;
     }
     if (isNaN(giaChinh) || giaChinh <= 0) {
-      alert("Giá chính phải là số > 0.");
+      toast.error("Giá chính phải là số > 0.");
       return;
     }
     if (giaChinh >= giaGoc) {
-      alert("Giá chính phải nhỏ hơn giá trước khi giảm.");
+      toast.error("Giá chính phải nhỏ hơn giá trước khi giảm.");
       return;
     }
     if (!thoiGian) {
-      alert("Vui lòng chọn kiểu thời gian.");
+      toast.error("Vui lòng chọn kiểu thời gian.");
+      return;
+    }
+    const tenTrung = packages.some(
+      (pkg) =>
+        pkg.ten_pakage.trim().toLowerCase() === ten_pakage.trim().toLowerCase() &&
+        (!isEdit || pkg.id !== form.id) // Nếu đang sửa, bỏ qua gói đang sửa
+    );
+    if (tenTrung) {
+      toast.error("Tên gói không được trùng.");
       return;
     }
 
