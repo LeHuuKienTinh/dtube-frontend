@@ -76,10 +76,10 @@ const Login = () => {
           <h2 className="title">Đăng nhập</h2>
           <form onSubmit={handleSubmit}>
             <div className="input-group">
-              <label>Địa chỉ Email</label>
+              <label>Tên đăng nhập</label>
               <input
                 type="text"
-                placeholder="Nhập email hoặc số điện thoại"
+                placeholder="Nhập username của bạn..."
                 value={credentials.username}
                 onChange={(e) =>
                   setCredentials({ ...credentials, username: e.target.value })

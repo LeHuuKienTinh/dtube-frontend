@@ -1,16 +1,23 @@
 .comment-manage-wrapper {
+.title-comment-manage{
+  color: #e00a0a;
+        font-size: 24px;
+        font-weight: 700;
+        padding-left: 0px;
+}
+}
+.control-wrapper{
+  width: 100%;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center; // Căn giữa bảng và tiêu đề
-  padding: 20px;
 }
-
 .comment-manage-title {
-  font-size: 24px;
+  font-size: 20px;
   color: #d63031;
   font-weight: bold;
-  text-align: center;
   margin-bottom: 20px;
+  align-items: start !important;
 }
 
 .add-word {

@@ -150,8 +150,8 @@ const PackageAdmin = () => {
             <tr key={item.id}>
               <td>{index + 1}</td>
               <td>{item.ten_pakage}</td>
-              <td>{parseFloat(item.gia_truoc_khi_giam).toLocaleString()}</td>
-              <td>{parseFloat(item.gia_chinh).toLocaleString()}</td>
+              <td>{parseFloat(item.gia_truoc_khi_giam).toLocaleString()} VND</td>
+              <td>{parseFloat(item.gia_chinh).toLocaleString()} VND</td>
               <td>{item.kieu_thoi_gian} tháng</td>
               <td>
                 <button onClick={() => handleEdit(item)}>Sửa</button>

@@ -42,29 +42,21 @@ const Dashbord = () => {
 
   return (
     <div className="dashboard-container">
-      <div className="grid-container">
-        <div className="dashboard-item admin-container">
-           <div className="chart-container">
-            <h3>Phân loại người dùng</h3>
-            <Pie data={data} />
-            <div className="chart-info">
-              {Object.keys(userCounts).map((key) => (
-                <div key={key}>
-                  <span style={{ color: data.datasets[0].backgroundColor[key - 1] }}>
-                    {data.labels[key - 1]}:
-                  </span>
-                  {userCounts[key]} ({((userCounts[key] / userData.length) * 100).toFixed(2)}%)
-                </div>
-              ))}
-            </div>
+      <div className="dashboard-item admin-container">
+        <div className="chart-container">
+          <h3>Phân loại người dùng</h3>
+          <Pie data={data} />
+          <div className="chart-info">
+            {Object.keys(userCounts).map((key) => (
+              <div key={key}>
+                <span style={{ color: data.datasets[0].backgroundColor[key - 1] }}>
+                  {data.labels[key - 1]}:
+                </span>
+                {userCounts[key]} ({((userCounts[key] / userData.length) * 100).toFixed(2)}%)
+              </div>
+            ))}
           </div>
         </div>
-        {/* Các ô khác */}
-        <div className="dashboard-item other-container">Ô 2</div>
-        <div className="dashboard-item other-container">Ô 3</div>
-        <div className="dashboard-item other-container">Ô 4</div>
-        <div className="dashboard-item other-container">Ô 5</div>
-        <div className="dashboard-item other-container">Ô 6</div>
       </div>
     </div>
   );

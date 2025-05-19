@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axiosInstance from '../../../../service/axiosInstance';
 import { useAuth } from '../../../../contexts/AuthProvider'; // ← import Auth context
 import './Security.scss'; // Import file SCSS
+import { toast } from 'react-toastify';
 
 const Security = () => {
   const { user } = useAuth(); // lấy user hiện tại
@@ -27,8 +28,9 @@ const Security = () => {
       setOldPassword('');
       setNewPassword('');
       setConfirmPassword('');
+      toast.success("Đổi mật khẩu thành công!")
     } catch (error) {
-      setMessage(error.response?.data?.message || '❌ Đổi mật khẩu thất bại');
+      toast.error('Đổi mật khẩu thất bại');
     }
   };
 

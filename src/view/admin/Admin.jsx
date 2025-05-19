@@ -31,8 +31,8 @@ const menuItems = [
   { to: "/admin/notification", icon: <FaBell />, label: "Quản lý thông báo" },
   { to: "/admin/movie", icon: <FaFilm />, label: "Quản lý phim" },
   { to: "/admin/report", icon: <FaFlag />, label: "Quản lý báo cáo" },
-  { to: "/admin/comment", icon: <FaComment />, label: "Quản lý bình luận" },
   { to: "/admin/vnpay", icon: <FaMoneyBillWave />, label: "Quản lý VNPay" },
+  { to: "/admin/comment", icon: <FaComment />, label: "Quản lý bình luận" },
 ];
 
 const NavbarAdmin = () => {
@@ -67,8 +67,8 @@ const NavbarAdmin = () => {
           <NavLink to="/admin/notification"> <IoIosNotifications size={20} className="me-2" />Quản lý Thông Báo</NavLink>
           <NavLink to="/admin/movie"> <RiMovie2Fill size={20} className="me-2" />Quản lý Phim</NavLink>
           <NavLink to="/admin/report"> <MdReport size={20} className="me-2" />Quản lý Báo Cáo</NavLink>
+          <NavLink to="/admin/vnpay"> <FaCreditCard size={20} className="me-2" />Quản lý Giao dịch</NavLink>
           <NavLink to="/admin/comment"> <FaComment size={20} className="me-2" />Quản lý Bình Luận</NavLink>
-          <NavLink to="/admin/vnpay"> <FaCreditCard size={20} className="me-2" />Quản lý VNPay</NavLink>
         </aside>
         <main className="content">
           <Outlet />

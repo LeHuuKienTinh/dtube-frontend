@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAuth } from '../../../../contexts/AuthProvider';
 import './Profile.scss';
+import { toast } from 'react-toastify';
 
 const Profile = () => {
   const { user } = useAuth();
@@ -17,7 +18,7 @@ const Profile = () => {
     const token = localStorage.getItem('token'); // Hoặc lấy từ context nếu bạn lưu ở đó
     if (token) {
       navigator.clipboard.writeText(token);
-      alert('✅ Token đã được copy!');
+      toast.success("Token đã được copy!")
     } else {
       alert('⚠️ Không tìm thấy token!');
     }

@@ -15,13 +15,13 @@ const FooterHomePage = () => {
         <div className='footer-help'>
             <footer className="footer">
                 <div className='question-yourself'>
-                    <a className='contact' onClick={() => navigate('/support')} >Bạn có câu hỏi? Liên hệ với chúng tôi!a</a>
+                    <a className='contact' onClick={() => navigate('/support')} >Bạn có câu hỏi? Liên hệ với chúng tôi!</a>
                 </div>
                 <div className="footer-container">
                     {footerLinks.map((column, colIndex) => (
                         <div className="footer-column" key={colIndex}>
                             {column.map((link, linkIndex) => (
-                                <a href="facebook.com" key={linkIndex}>{link}</a>
+                                <a href="/support" key={linkIndex}>{link}</a>
                             ))}
                         </div>
                     ))}

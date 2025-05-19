@@ -12,7 +12,7 @@ $text-color: white;
   .register-container {
     background: $background-dark;
     padding: 30px;
-    width: 60vh;
+    width: 30vw;
     text-align: center;
 
     .form {
@@ -22,7 +22,7 @@ $text-color: white;
       .title {
         color: $text-color;
         text-align: center;
-        margin-bottom: 20px;
+        padding-bottom: 0;
       }
 
       .input-group {
